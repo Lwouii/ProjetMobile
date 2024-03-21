@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int itemId= menuItem.getItemId();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId= item.getItemId();
                 if(itemId==R.id.bottom_home){
                     openFragment(new BottomHomeFragment());
                     return true;
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         fragmentManager=getSupportFragmentManager();
-        openFragment(new HomeFragment());
+        openFragment(new BottomHomeFragment());
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
         if(savedInstanceState==null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            navigationView.setCheckedItem(R.id.nav_home);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BottomHomeFragment()).commit();
+            navigationView.setCheckedItem(R.id.bottom_home);
         }
     }
 
