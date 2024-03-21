@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/bottom_home"
+        android:title="Home"
+        android:icon="@drawable/bottom_home"/>
+
+    <item
+        android:id="@+id/bottom_person"
+        android:title="Person"
+        android:icon="@drawable/bottom_person"
+        />
+
+    <item
+        android:title=""/>
+
+    <item
+        android:id="@+id/bottom_dog"
+        android:title="Dog"
+        android:icon="@drawable/bottom_dog" />
+    <item
+        android:id="@+id/bottom_cat"
+        android:title="Cat"
+        android:icon="@drawable/bottom_cat" />
+
+</menu>
