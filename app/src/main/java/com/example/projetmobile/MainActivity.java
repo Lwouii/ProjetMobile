@@ -59,10 +59,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId= item.getItemId();
-                if(itemId==R.id.bottom_home){
-                    openFragment(new BottomHomeFragment());
-                    return true;
-                }else if(itemId==R.id.bottom_person){
+                if(itemId==R.id.bottom_person){
                     openFragment(new BottomPersonFragment());
                     return true;
                 } else if(itemId==R.id.bottom_cat){
@@ -71,7 +68,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }else if(itemId==R.id.bottom_dog){
                     openFragment(new BottomDogFragment());
                     return true;
-                }
+                }else if(itemId==R.id.bottom_nationality){
+                openFragment(new BottomNationalityFragment());
+                return true;
+            }
+
                 return false;
             }
         });
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if(savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BottomHomeFragment()).commit();
-            navigationView.setCheckedItem(R.id.bottom_home);
+            navigationView.setCheckedItem(R.id.bottom_nationality);
         }
     }
 
