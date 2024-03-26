@@ -55,6 +55,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setBackground(null);
 
+        MenuItem dogMenuItem = bottomNavigationView.getMenu().findItem(R.id.bottom_dog);
+        dogMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(@NonNull MenuItem item) {
+                openFragment(new BottomDogFragment());
+                return true;
+            }
+        });
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
