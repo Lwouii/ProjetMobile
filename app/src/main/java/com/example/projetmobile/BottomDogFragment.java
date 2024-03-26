@@ -1,19 +1,23 @@
 package com.example.projetmobile;
 
-import com.squareup.picasso.Picasso;
+import android.content.Context;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import org.json.JSONArray;
+import androidx.fragment.app.Fragment;
+
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,108 +29,103 @@ import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BottomDogFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class BottomDogFragment extends Fragment{
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class BottomDogFragment extends Fragment {
 
     public BottomDogFragment() {
         // Required empty public constructor
     }
 
-
-    public static BottomDogFragment newInstance(String param1, String param2) {
-        BottomDogFragment fragment = new BottomDogFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+    public static BottomDogFragment newInstance() {
+        return new BottomDogFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        call();
-
     }
 
-    private void call() {
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_bottom_dog, container, false);
+
+        EditText dogText = view.findViewById(R.id.dogText);
+        TextView dogName = view.findViewById(R.id.dogName);
+        ImageView dogImageView = view.findViewById(R.id.dogImageView);
+        Button dogButton = view.findViewById(R.id.dogButton);
+
+        dogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = dogText.getText().toString().trim();
+                if (name.isEmpty()) {
+                    Toast.makeText(getContext(), "Entrez un nom je vous prie !", Toast.LENGTH_SHORT).show();
+                } else {
+                    dogName.setText(name);
+                    callAPIAndDisplayDog(dogImageView);
+                    dogText.setText(""); // Efface le contenu de l'EditText après l'appui sur le bouton
+                    hideKeyboard(); // Cache le clavier après l'appui sur le bouton
+                }
+            }
+        });
+
+        return view;
+    }
+
+    private void callAPIAndDisplayDog(ImageView dogImageView) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(new Runnable() {
             @Override
             public void run() {
                 String http = getDataFromHTTP("https://dog.ceo/api/breeds/image/random");
-
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-
-
-
                         try {
-                            JSONObject jo = new JSONObject(http);
-                            String message = jo.getString("message");
-                            ImageView imageView = getView().findViewById(R.id.dogImageView); // Assurez-vous que l'ID de votre ImageView est correct
-                            Picasso.get().load(message).into(imageView);
-
+                            JSONObject jsonObject = new JSONObject(http);
+                            String message = jsonObject.getString("message");
+                            Picasso.get().load(message).into(dogImageView);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
-
-
                     }
-
                 });
             }
         });
     }
 
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bottom_dog, container, false);
-
-
-    }
-
-    public String getDataFromHTTP(String param){
+    public String getDataFromHTTP(String param) {
         StringBuilder result = new StringBuilder();
-        HttpURLConnection connexion = null;
+        HttpURLConnection connection = null;
         try {
             URL url = new URL(param);
-            connexion = (HttpURLConnection) url.openConnection();
-            connexion.setRequestMethod("GET");
-            InputStream inputStream = connexion.getInputStream();
-            InputStreamReader inputStreamReader = new
-                    InputStreamReader(inputStream);
-            BufferedReader bf = new BufferedReader(inputStreamReader);
-            String ligne = "";
-            while ((ligne = bf.readLine()) != null) {
-                result.append(ligne);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            InputStream inputStream = connection.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                result.append(line);
             }
             inputStream.close();
-            bf.close();
-            connexion.disconnect();
+            bufferedReader.close();
         } catch (Exception e) {
             result = new StringBuilder("Erreur ");
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
         }
         return result.toString();
     }
+
+    private void hideKeyboard() {
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
 }
-
-
