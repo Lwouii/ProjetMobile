@@ -1,15 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BottomNationalityFragment">
 
+
     <!-- TODO: Update blank fragment layout -->
+    <EditText
+        android:paddingTop="50dp"
+        android:id="@+id/nomEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:hint="Entrez votre nom"
+        />
+    <Button
+        android:id="@+id/whoButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nomEditText"
+        android:layout_centerHorizontal="true"
+        android:text="Valider"
+        />
     <TextView
+        android:id="@+id/natiView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Nationality Fragment"
-        android:gravity="center"/>
+        android:layout_below="@+id/whoButton"
+        />
+    <TextView
+        android:id="@+id/genderView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/natiView"
+        />
 
-</FrameLayout>
+</RelativeLayout>
