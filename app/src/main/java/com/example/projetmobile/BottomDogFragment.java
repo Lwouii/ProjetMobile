@@ -30,9 +30,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class BottomDogFragment extends Fragment {
+    private DBHandler dbHandler;
+
+    EditText dogText ;
+    TextView dogName ;
+    String imageUrl ;
 
     public BottomDogFragment() {
-        // Required empty public constructor
+
     }
 
     public static BottomDogFragment newInstance() {
@@ -47,10 +52,11 @@ public class BottomDogFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        dbHandler = new DBHandler(getContext());
         View view = inflater.inflate(R.layout.fragment_bottom_dog, container, false);
 
-        EditText dogText = view.findViewById(R.id.dogText);
-        TextView dogName = view.findViewById(R.id.dogName);
+        dogText = view.findViewById(R.id.dogText);
+         dogName = view.findViewById(R.id.dogName);
         ImageView dogImageView = view.findViewById(R.id.dogImageView);
         Button dogButton = view.findViewById(R.id.dogButton);
 
@@ -85,6 +91,7 @@ public class BottomDogFragment extends Fragment {
                         try {
                             JSONObject jsonObject = new JSONObject(http);
                             String message = jsonObject.getString("message");
+                            imageUrl=message;
                             Picasso.get().load(message).into(dogImageView);
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
@@ -93,6 +100,14 @@ public class BottomDogFragment extends Fragment {
                 });
             }
         });
+        String name = dogText.getText().toString().trim();
+        boolean isInserted = dbHandler.addDog(name, imageUrl);
+        if (isInserted) {
+            Toast.makeText(getContext(), "Chien ajouté à la base de données", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Erreur lors de l'ajout du chien à la base de données", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public String getDataFromHTTP(String param) {
