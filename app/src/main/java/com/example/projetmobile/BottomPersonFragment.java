@@ -1,58 +1,42 @@
 package com.example.projetmobile;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BottomPersonFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class BottomPersonFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ImageView profileImageView;
+    private TextView nameTextView;
+    private TextView locationTextView;
+    private TextView emailTextView;
+    private TextView phoneTextView;
 
     public BottomPersonFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BottomPersonFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static BottomPersonFragment newInstance(String param1, String param2) {
-        BottomPersonFragment fragment = new BottomPersonFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public static BottomPersonFragment newInstance() {
+        return new BottomPersonFragment();
     }
 
     @Override
@@ -60,5 +44,78 @@ public class BottomPersonFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_bottom_person, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        profileImageView = view.findViewById(R.id.profile_image);
+        nameTextView = view.findViewById(R.id.nameTextView);
+        locationTextView = view.findViewById(R.id.addressTextView);
+        emailTextView = view.findViewById(R.id.emailTextView);
+        phoneTextView = view.findViewById(R.id.phoneTextView);
+
+        fetchRandomUserData();
+    }
+
+    private void fetchRandomUserData() {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                String data = Utils.getDataFromHTTP("https://randomuser.me/api/");
+                try {
+                    JSONObject jsonObject = new JSONObject(data);
+                    JSONArray resultsArray = jsonObject.getJSONArray("results");
+                    JSONObject userObject = resultsArray.getJSONObject(0);
+
+                    final String name = userObject.getJSONObject("name").getString("title") +
+                            " " + userObject.getJSONObject("name").getString("first") +
+                            " " + userObject.getJSONObject("name").getString("last");
+                    final String location = userObject.getJSONObject("location").getString("street") +
+                            ", " + userObject.getJSONObject("location").getString("city") +
+                            ", " + userObject.getJSONObject("location").getString("state") +
+                            ", " + userObject.getJSONObject("location").getString("country");
+                    final String email = userObject.getString("email");
+                    final String phone = userObject.getString("phone");
+
+                    // Update UI on the main thread
+                    requireActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            nameTextView.setText(name);
+                            locationTextView.setText(location);
+                            emailTextView.setText(email);
+                            phoneTextView.setText(phone);
+
+                            // Load profile image using Glide library
+                            String profileImageUrl = null;
+                            try {
+                                profileImageUrl = userObject.getJSONObject("picture").getString("large");
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            }
+                            RequestOptions requestOptions = new RequestOptions()
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL);
+                            Glide.with(requireContext())
+                                    .load(profileImageUrl)
+                                    .apply(requestOptions)
+                                    .into(profileImageView);
+                        }
+                    });
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    // Handle JSON parsing error
+                    requireActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(requireContext(), "Error parsing JSON data", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        });
     }
 }
