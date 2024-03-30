@@ -20,6 +20,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -27,9 +31,13 @@ public class BottomPersonFragment extends Fragment {
 
     private ImageView profileImageView;
     private TextView nameTextView;
-    private TextView locationTextView;
+    private TextView streetTextView;
     private TextView emailTextView;
     private TextView phoneTextView;
+    private TextView cityTextView;
+    private TextView dateTextView;
+    private TextView ageTextView;
+    private TextView genderTextView;
 
     public BottomPersonFragment() {
         // Required empty public constructor
@@ -52,9 +60,13 @@ public class BottomPersonFragment extends Fragment {
 
         profileImageView = view.findViewById(R.id.profile_image);
         nameTextView = view.findViewById(R.id.nameTextView);
-        locationTextView = view.findViewById(R.id.addressTextView);
         emailTextView = view.findViewById(R.id.emailTextView);
         phoneTextView = view.findViewById(R.id.phoneTextView);
+        cityTextView = view.findViewById(R.id.cityTextView);
+        streetTextView = view.findViewById(R.id.streetTextView);
+        dateTextView = view.findViewById(R.id.dateTextView);
+        ageTextView = view.findViewById(R.id.ageTextView);
+        genderTextView = view.findViewById(R.id.genderTextView);
 
         fetchRandomUserData();
     }
@@ -70,8 +82,7 @@ public class BottomPersonFragment extends Fragment {
                     JSONArray resultsArray = jsonObject.getJSONArray("results");
                     JSONObject userObject = resultsArray.getJSONObject(0);
 
-                    final String name = userObject.getJSONObject("name").getString("title") +
-                            " " + userObject.getJSONObject("name").getString("first") +
+                    final String name = userObject.getJSONObject("name").getString("first") +
                             " " + userObject.getJSONObject("name").getString("last");
                     final String location = userObject.getJSONObject("location").getString("street") +
                             ", " + userObject.getJSONObject("location").getString("city") +
@@ -79,15 +90,45 @@ public class BottomPersonFragment extends Fragment {
                             ", " + userObject.getJSONObject("location").getString("country");
                     final String email = userObject.getString("email");
                     final String phone = userObject.getString("phone");
+                    final String city = userObject.getJSONObject("location").getString("city");
+                    final String street = userObject.getJSONObject("location").getJSONObject("street").getString("name") +
+                            " " + userObject.getJSONObject("location").getJSONObject("street").getInt("number");
+                    final String date = userObject.getJSONObject("dob").getString("date");
+                    final String age = userObject.getJSONObject("dob").getString("age");
+                    final String gender = userObject.getString("gender");
 
-                    // Update UI on the main thread
+
+
+
+                    //Formatage de la date de base pour virer l'heure de naissance, ne pas toucher !
+                    String formattedDate = "";
+                    try {
+                        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault());
+                        String dateString = date;
+                        Date dobDate = inputFormat.parse(dateString);
+
+                        SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                        formattedDate = outputFormat.format(dobDate);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    String finalFormattedDate = formattedDate;
+
+                    //Première lettre du genre en majuscule, ne pas toucher
+                    String genderMaj = gender.substring(0, 1).toUpperCase() + gender.substring(1);
+
                     requireActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             nameTextView.setText(name);
-                            locationTextView.setText(location);
                             emailTextView.setText(email);
                             phoneTextView.setText(phone);
+                            cityTextView.setText(city);
+                            streetTextView.setText(street);
+
+                            dateTextView.setText(finalFormattedDate);
+                            ageTextView.setText(age+" ans");
+                            genderTextView.setText(genderMaj);
 
                             // Load profile image using Glide library
                             String profileImageUrl = null;

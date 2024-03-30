@@ -1,114 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-    <TextView
-        android:layout_marginTop="50dp"
-        android:id="@+id/pdpLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/separationBar"
-        android:layout_centerHorizontal="true"
-        android:text="Votre photo :"
-        android:textStyle="bold"/>
-
-    <ImageView
-        android:id="@+id/profile_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_launcher_background"
-        android:contentDescription="@string/profile_image"
-        android:layout_marginBottom="10dp" />
-
-    <TextView
-        android:id="@+id/name_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/profile_image"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Nom : "
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="24sp"
-        android:textColor="@color/lavender"
-        android:text="Nom de l'utilisateur" />
-
-
-    <View
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/white"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:id="@+id/separationBar"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+        <TextView
+            android:layout_marginTop="50dp"
+            android:id="@+id/pdpLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/separationBar"
+            android:layout_centerHorizontal="true"
+            android:text="Votre photo :"
+            android:textStyle="bold"/>
 
-    <TextView
-        android:id="@+id/phone_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/separationBar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Numéro de téléphone : "
-        android:textStyle="bold"/>
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_launcher_background"
+            android:contentDescription="@string/profile_image"
+            android:layout_marginBottom="10dp" />
 
-    <TextView
-        android:id="@+id/phoneTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:text="Votre numéro de téléphone : "
-        android:layout_marginStart="16dp"
-        android:drawableStart="@drawable/ic_phone"
-        android:drawablePadding="8dp"/>
-    <TextView
-        android:id="@+id/email_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/phoneTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Email : "
-        android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/name_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Nom : "
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textColor="@color/lavender"
+            android:text="Nom de l'utilisateur" />
 
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:text="Votre adresse mail : "
-        android:layout_marginStart="16dp"
-        android:drawableStart="@drawable/ic_email"
-        android:drawablePadding="8dp"/>
 
-    <TextView
-        android:id="@+id/address_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/emailTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Adresse : "
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/addressTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/white"
-        android:text="Votre adresse : "
-        android:layout_marginStart="16dp"
-        android:drawableStart="@drawable/ic_address"
-        android:drawablePadding="8dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/separationBar"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/info_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:textSize="20dp"
+            android:textColor="@color/lavender"
+            android:text="Informations personnelles : "
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/gender_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phoneTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Genre :"
+            android:textStyle="bold"/>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/gender_label"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/maleImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_male"
+                />
+
+            <ImageView
+                android:id="@+id/femaleImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_female"
+                />
+
+            <TextView
+                android:id="@+id/genderTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:text="Genre :"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phoneTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Date de naissance : "
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="Votre date de naissance est : "
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_date"
+            android:drawablePadding="8dp"/>
+        <TextView
+            android:id="@+id/age_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phoneTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Vous avez :"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/ageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="Votre âge est :"
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_age"
+            android:drawablePadding="8dp"/>
+
+        <TextView
+            android:id="@+id/phone_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/separationBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Numéro de téléphone : "
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:id="@+id/phoneTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="Votre numéro de téléphone : "
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawablePadding="8dp"/>
+
+        <TextView
+            android:id="@+id/email_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phoneTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Email : "
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/emailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="Votre adresse mail : "
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="8dp"/>
+
+        <TextView
+            android:id="@+id/address_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:textSize="20dp"
+            android:textColor="@color/lavender"
+            android:text="Adresse : "
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/city_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/separationBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Ville :"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/cityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="Votre numéro de téléphone : "
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_city"
+            android:drawablePadding="8dp"/>
+        <TextView
+            android:id="@+id/street_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/separationBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Rue :"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/streetTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="Votre rue : "
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/ic_street"
+            android:drawablePadding="8dp"
+            android:layout_marginBottom="80dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
