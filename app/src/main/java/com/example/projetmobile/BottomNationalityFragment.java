@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,6 +33,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class BottomNationalityFragment extends Fragment {
+    private CodePays codePays;
+    private EditText nomText;
+    private TextView genderView;
+    private TextView natiView;
+    private TextView genderViewLabel;
+    private TextView genderViewFe;
+    private TextView genderViewHo;
 
     public BottomNationalityFragment() {
         // Required empty public constructor
@@ -49,8 +57,14 @@ public class BottomNationalityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_bottom_nationality, container, false);
 
-        EditText nomText = view.findViewById(R.id.nomEditText);
-        TextView genderView = view.findViewById(R.id.genderView);
+        codePays = new CodePays();
+        nomText = view.findViewById(R.id.nomEditText);
+        genderView = view.findViewById(R.id.genderView);
+        natiView = view.findViewById(R.id.natiView);
+        genderViewLabel = view.findViewById(R.id.genderViewLabel);
+        genderViewFe = view.findViewById(R.id.genderViewFe);
+        genderViewHo = view.findViewById(R.id.genderViewHo);
+
         Button whoButton = view.findViewById(R.id.whoButton);
 
         whoButton.setOnClickListener(new View.OnClickListener() {
@@ -61,8 +75,11 @@ public class BottomNationalityFragment extends Fragment {
                     Toast.makeText(getContext(), "Entrez un nom s'il vous plaît!", Toast.LENGTH_SHORT).show();
                 } else {
                     nomText.setText(name);
-                    callAPIAndDisplayGender(name, genderView);
+                    callAPIAndDisplayData(name);
                     hideKeyboard(); // Cache le clavier après l'appui sur le bouton
+                    // Rendre l'EditText et le Button invisibles
+                    nomText.setVisibility(View.GONE);
+                    whoButton.setVisibility(View.GONE);
                 }
             }
         });
@@ -70,69 +87,66 @@ public class BottomNationalityFragment extends Fragment {
         return view;
     }
 
-    private void callAPIAndDisplayGender(String name, TextView genderView) {
+    private void callAPIAndDisplayData(String name) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 
+        // Call to nationalize.io API
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                try {
-                    // Encodage du nom pour éviter les erreurs liées aux caractères spéciaux
-                    String encodedName = URLEncoder.encode(name, "UTF-8");
-
-                    // Appel à l'API genderize.io
-                    String apiUrl = "https://api.genderize.io/?name=" + encodedName;
-                    String responseData = getDataFromHTTP(apiUrl);
-
-                    // Vérification de la réponse de l'API
-                    if (!responseData.isEmpty()) {
-                        // Mise à jour de l'UI sur le thread principal
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    JSONObject jsonObject = new JSONObject(responseData);
-                                    if (jsonObject.has("gender")) {
-                                        String gender = jsonObject.getString("gender");
-                                        genderView.setText("Vous êtes un(e): " + gender);
-                                    } else {
-                                        genderView.setText("Genre non trouvé pour ce nom.");
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                    genderView.setText("Erreur lors de l'analyse des données.");
-                                }
+                String nationalizeAPIResult = getDataFromHTTP("https://api.nationalize.io/?name=" + name);
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            JSONObject jsonObject = new JSONObject(nationalizeAPIResult);
+                            JSONArray countries = jsonObject.getJSONArray("country");
+                            StringBuilder nationalities = new StringBuilder();
+                            for (int i = 0; i < countries.length(); i++) {
+                                JSONObject country = countries.getJSONObject(i);
+                                String countryCode = country.getString("country_id");
+                                String countryName = codePays.mapCountryCodeToFullName(countryCode); // Mapping du code de pays au nom complet
+                                String probabilityPercentage = String.format("%.2f%%", country.getDouble("probability") * 100);
+                                nationalities.append(countryName).append(": ").append(probabilityPercentage).append("\n");
                             }
-                        });
-                    } else {
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                genderView.setText("Aucune réponse de l'API.");
-                            }
-                        });
+                            natiView.setText(nationalities.toString());
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            genderView.setText("Erreur lors de l'encodage du nom.");
+                });
+            }
+        });
+
+        // Call to genderize.io API
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                String genderizeAPIResult = getDataFromHTTP("https://api.genderize.io/?name=" + name);
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            JSONObject jsonObject = new JSONObject(genderizeAPIResult);
+                            String gender = jsonObject.getString("gender");
+                            if (gender.equals("male")) {
+                                genderView.setText("Homme");
+                                genderViewHo.setVisibility(View.VISIBLE); // Rendre visible le TextView pour le symbole masculin
+                            } else {
+                                genderView.setText("Femme");
+                                genderViewFe.setVisibility(View.VISIBLE); // Rendre visible le TextView pour le symbole féminin
+                            }
+                            genderViewLabel.setVisibility(View.VISIBLE); // Rendre visible le TextView pour le label du genre
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            genderView.setText("Erreur lors de la requête à l'API.");
-                        }
-                    });
-                }
+                    }
+                });
             }
         });
     }
+
     public String getDataFromHTTP(String param) {
         StringBuilder result = new StringBuilder();
         HttpURLConnection connection = null;
@@ -158,6 +172,7 @@ public class BottomNationalityFragment extends Fragment {
         }
         return result.toString();
     }
+
     private void hideKeyboard() {
         View view = getActivity().getCurrentFocus();
         if (view != null) {
