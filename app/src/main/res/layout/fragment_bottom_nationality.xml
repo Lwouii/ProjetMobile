@@ -9,7 +9,7 @@
 
     <EditText
         android:gravity="center"
-        android:paddingTop="50dp"
+        android:layout_marginTop="50dp"
         android:id="@+id/nomEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,14 +17,19 @@
         android:hint="Entrez votre nom"
         android:textColorHint="@color/white"
         />
+
+
     <Button
-        android:id="@+id/whoButton"
+        android:backgroundTint="@color/lavender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nomEditText"
+        android:id="@+id/whoButton"
+        android:layout_below="@id/nomEditText"
         android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
         android:text="Valider"
-        />
+        android:background="@drawable/cadre"
+        ></Button>
 
     <TextView
         android:id="@+id/natiViewLabel"

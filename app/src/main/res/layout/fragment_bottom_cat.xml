@@ -13,15 +13,17 @@
         android:paddingTop="60dp"
         android:textAlignment="center"
         android:hint="Entrez le nom de votre chat"
+        android:maxLines="1"
+        android:inputType="text"
         android:id="@+id/catText"></EditText>
         <Button
+            android:backgroundTint="@color/lavender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/catButton"
             android:layout_below="@id/catText"
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
-            android:backgroundTint="@color/lavender"
             android:text="Créer"
             ></Button>
 

@@ -114,7 +114,7 @@ public class BottomPersonFragment extends Fragment {
                     }
                     String finalFormattedDate = formattedDate;
 
-                    //Première lettre du genre en majuscule, ne pas toucher
+                    //Première lettre du genre en majuscule, ne pas toucher !
                     String genderMaj = gender.substring(0, 1).toUpperCase() + gender.substring(1);
 
                     requireActivity().runOnUiThread(new Runnable() {

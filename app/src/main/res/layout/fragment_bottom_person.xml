@@ -22,7 +22,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/baseline_question_mark_24"
             android:contentDescription="@string/profile_image"
             android:layout_marginBottom="10dp" />
 
