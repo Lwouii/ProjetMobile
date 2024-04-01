@@ -1,6 +1,10 @@
 package com.example.projetmobile;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -37,69 +41,88 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        if (!isNetworkAvailable() || isAirplaneModeOn()) {
+            // Afficher le fragment d'erreur
+            ErrorFragment errorFragment = new ErrorFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(android.R.id.content, errorFragment);
+            transaction.commit();
+        } else {
+            setContentView(R.layout.activity_main);
 
-        fab=findViewById(R.id.fab);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            fab = findViewById(R.id.fab);
+            toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
+            drawerLayout = findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
+            drawerLayout.addDrawerListener(toggle);
+            toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
 
 
-        bottomNavigationView=findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setBackground(null);
+            bottomNavigationView = findViewById(R.id.bottom_navigation);
+            bottomNavigationView.setBackground(null);
 
-        MenuItem dogMenuItem = bottomNavigationView.getMenu().findItem(R.id.bottom_dog);
-        dogMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(@NonNull MenuItem item) {
-                openFragment(new BottomDogFragment());
-                return true;
-            }
-        });
-
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId= item.getItemId();
-                if(itemId==R.id.bottom_person){
-                    openFragment(new BottomPersonFragment());
-                    return true;
-                } else if(itemId==R.id.bottom_cat){
-                    openFragment(new BottomCatFragment());
-                    return true;
-                }else if(itemId==R.id.bottom_dog){
+            MenuItem dogMenuItem = bottomNavigationView.getMenu().findItem(R.id.bottom_dog);
+            dogMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(@NonNull MenuItem item) {
                     openFragment(new BottomDogFragment());
                     return true;
-                }else if(itemId==R.id.bottom_nationality){
-                openFragment(new BottomNationalityFragment());
-                return true;
+                }
+            });
+
+            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    int itemId = item.getItemId();
+                    if (itemId == R.id.bottom_person) {
+                        openFragment(new BottomPersonFragment());
+                        return true;
+                    } else if (itemId == R.id.bottom_cat) {
+                        openFragment(new BottomCatFragment());
+                        return true;
+                    } else if (itemId == R.id.bottom_dog) {
+                        openFragment(new BottomDogFragment());
+                        return true;
+                    } else if (itemId == R.id.bottom_nationality) {
+                        openFragment(new BottomNationalityFragment());
+                        return true;
+                    }
+
+                    return false;
+                }
+            });
+
+            fragmentManager = getSupportFragmentManager();
+            openFragment(new BottomHomeFragment());
+
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MainActivity.this, "Upload Videos!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            if (savedInstanceState == null) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BottomHomeFragment()).commit();
+                navigationView.setCheckedItem(R.id.bottom_nationality);
             }
-
-                return false;
-            }
-        });
-
-        fragmentManager=getSupportFragmentManager();
-        openFragment(new BottomHomeFragment());
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Upload Videos!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        if(savedInstanceState==null){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BottomHomeFragment()).commit();
-            navigationView.setCheckedItem(R.id.bottom_nationality);
         }
+        
+    }
+
+    private boolean isAirplaneModeOn() {
+        return Settings.Global.getInt(getContentResolver(), Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     @Override
@@ -118,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         else if(itemId==R.id.nav_logout){
             Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();
+            finish();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

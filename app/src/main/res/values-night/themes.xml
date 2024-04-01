@@ -8,7 +8,7 @@
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:statusBarColor">@color/lavender</item>
     </style>
-    <style name="Theme.ProjetMobile." parent="Base.Theme.ProjetMobile"> </style>
+    <style name="Theme.ProjetMobile" parent="Base.Theme.ProjetMobile"> </style>
     <style name="ThemeOverlay.AppCompat.navTheme">
     <item name="colorPrimary">@color/white</item>
     </style>
