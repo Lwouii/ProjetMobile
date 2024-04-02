@@ -23,46 +23,57 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        clearDB=view.findViewById(R.id.clearButton);
+        clearDB = view.findViewById(R.id.clearButton);
         clearDB.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 dbHandler.deleteDB(requireContext());
             }
-
-
         });
 
         dbHandler = new DBHandler(getContext());
         LinearLayout dogsLayout = view.findViewById(R.id.dogsLayout);
+        LinearLayout catsLayout = view.findViewById(R.id.catsLayout);
 
-        Cursor cursor = dbHandler.getAllDogs();
+        // Afficher les chiens
+        displayPets(dbHandler.getAllDogs(), dogsLayout);
+
+        // Afficher les chats
+        displayPets(dbHandler.getAllCats(), catsLayout);
+
+        return view;
+    }
+
+    private void displayPets(Cursor cursor, LinearLayout layout) {
         if (cursor.moveToFirst()) {
             do {
-                String name = cursor.getString(cursor.getColumnIndex(DBContract.DogEntry.COLUMN_NAME));
-                String imageUrl = cursor.getString(cursor.getColumnIndex(DBContract.DogEntry.COLUMN_IMAGE_URL));
+                String nameColumn = DBContract.DogEntry.COLUMN_NAME;
+                String imageUrlColumn = DBContract.DogEntry.COLUMN_IMAGE_URL;
 
-                // Create a new LinearLayout for each dog
-                LinearLayout dogInfoLayout = new LinearLayout(getContext());
-                dogInfoLayout.setOrientation(LinearLayout.VERTICAL);
+                @SuppressLint("Range")
+                String name = cursor.getString(cursor.getColumnIndex(nameColumn));
+                @SuppressLint("Range")
+                String imageUrl = cursor.getString(cursor.getColumnIndex(imageUrlColumn));
 
-                // Create TextView for dog name
-                TextView dogNameTextView = new TextView(getContext());
-                dogNameTextView.setText(name);
+                // Créer un nouveau LinearLayout pour chaque animal
+                LinearLayout petInfoLayout = new LinearLayout(getContext());
+                petInfoLayout.setOrientation(LinearLayout.VERTICAL);
 
-                // Create ImageView for dog image
-                ImageView dogImageView = new ImageView(getContext());
-                Picasso.get().load(imageUrl).into(dogImageView);
+                // Créer TextView pour le nom de l'animal
+                TextView petNameTextView = new TextView(getContext());
+                petNameTextView.setText(name);
 
-                // Add TextView and ImageView to the dog LinearLayout
-                dogInfoLayout.addView(dogNameTextView);
-                dogInfoLayout.addView(dogImageView);
+                // Créer ImageView pour l'image de l'animal
+                ImageView petImageView = new ImageView(getContext());
+                Picasso.get().load(imageUrl).into(petImageView);
 
-                // Add dog LinearLayout to the main LinearLayout
-                dogsLayout.addView(dogInfoLayout);
+                // Ajouter TextView et ImageView au LinearLayout de l'animal
+                petInfoLayout.addView(petNameTextView);
+                petInfoLayout.addView(petImageView);
+
+                // Ajouter le LinearLayout de l'animal au LinearLayout principal
+                layout.addView(petInfoLayout);
             } while (cursor.moveToNext());
         }
         cursor.close();
-
-        return view;
     }
 }

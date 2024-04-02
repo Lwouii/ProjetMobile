@@ -2,9 +2,6 @@ package com.example.projetmobile;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
@@ -17,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
+import com.example.projetmobile.DBHandler;
+import com.example.projetmobile.R;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -32,16 +33,19 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class BottomCatFragment extends Fragment {
+    private DBHandler dbHandler;
+
+    EditText catText;
+    TextView catName;
+    String imageUrl;
+    String name;
 
     public BottomCatFragment() {
-        // Required empty public constructor
+
     }
 
-    public static BottomCatFragment newInstance(String param1, String param2) {
-        BottomCatFragment fragment = new BottomCatFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
+    public static BottomCatFragment newInstance() {
+        return new BottomCatFragment();
     }
 
     @Override
@@ -52,22 +56,24 @@ public class BottomCatFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        dbHandler = new DBHandler(getContext());
         View view = inflater.inflate(R.layout.fragment_bottom_cat, container, false);
 
-        EditText catText = view.findViewById(R.id.catText);
-        TextView catName = view.findViewById(R.id.catName);
+        catText = view.findViewById(R.id.catText);
+        catName = view.findViewById(R.id.catName);
         ImageView catImageView = view.findViewById(R.id.catImageView);
         Button catButton = view.findViewById(R.id.catButton);
 
         catButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = catText.getText().toString().trim();
+                name = catText.getText().toString().trim();
                 if (name.isEmpty()) {
-                    Toast.makeText(getContext(), "Compliqué de générer un chat sans nom...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Entrez un nom je vous prie !", Toast.LENGTH_SHORT).show();
                 } else {
-                    catName.setText(name);
                     callAPIAndDisplayCat(catImageView);
+                    System.out.println("LE NOM EST " + name);
+
                     catText.setText(""); // Efface le contenu de l'EditText après l'appui sur le bouton
                     hideKeyboard(); // Cache le clavier après l'appui sur le bouton
                 }
@@ -84,17 +90,22 @@ public class BottomCatFragment extends Fragment {
             @Override
             public void run() {
                 String http = getDataFromHTTP("https://api.thecatapi.com/v1/images/search");
+
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
                         try {
                             JSONArray jsonArray = new JSONArray(http);
-                            JSONObject jo = jsonArray.getJSONObject(0);
-                            String imageUrl = jo.getString("url");
-
-                            // Load image into ImageView
-                            Picasso.get().load(imageUrl).into(catImageView);
-
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+                            String message = jsonObject.getString("url");
+                            imageUrl = message;
+                            Picasso.get().load(message).into(catImageView);
+                            boolean isInserted = dbHandler.addCat(name, imageUrl);
+                            if (isInserted) {
+                                Toast.makeText(getContext(), "Chat ajouté à la base de données", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), "Erreur lors de l'ajout du chat à la base de données", Toast.LENGTH_SHORT).show();
+                            }
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -106,24 +117,26 @@ public class BottomCatFragment extends Fragment {
 
     public String getDataFromHTTP(String param) {
         StringBuilder result = new StringBuilder();
-        HttpURLConnection connexion = null;
+        HttpURLConnection connection = null;
         try {
             URL url = new URL(param);
-            connexion = (HttpURLConnection) url.openConnection();
-            connexion.setRequestMethod("GET");
-            InputStream inputStream = connexion.getInputStream();
-            InputStreamReader inputStreamReader = new
-                    InputStreamReader(inputStream);
-            BufferedReader bf = new BufferedReader(inputStreamReader);
-            String ligne = "";
-            while ((ligne = bf.readLine()) != null) {
-                result.append(ligne);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            InputStream inputStream = connection.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                result.append(line);
             }
             inputStream.close();
-            bf.close();
-            connexion.disconnect();
+            bufferedReader.close();
         } catch (Exception e) {
             result = new StringBuilder("Erreur ");
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
         }
         return result.toString();
     }
