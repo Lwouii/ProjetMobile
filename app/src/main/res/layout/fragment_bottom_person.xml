@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="24sp"
-            android:textColor="@color/lavender"
+            android:textColor="@color/design_default_color_primary"
             android:text="Nom de l'utilisateur" />
 
 
@@ -202,6 +202,27 @@
             android:textColor="@color/lavender"
             android:text="Adresse : "
             android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/country_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/separationBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Pays :"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/countryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="Votre pays : "
+            android:layout_marginStart="16dp"
+            android:drawableStart="@drawable/baseline_flag_24"
+            android:drawablePadding="8dp"/>
 
         <TextView
             android:id="@+id/city_label"

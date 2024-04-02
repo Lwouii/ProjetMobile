@@ -38,7 +38,7 @@ public class BottomPersonFragment extends Fragment {
     private TextView dateTextView;
     private TextView ageTextView;
     private TextView genderTextView;
-
+    private TextView countryTextView;
     public BottomPersonFragment() {
         // Required empty public constructor
     }
@@ -67,6 +67,7 @@ public class BottomPersonFragment extends Fragment {
         dateTextView = view.findViewById(R.id.dateTextView);
         ageTextView = view.findViewById(R.id.ageTextView);
         genderTextView = view.findViewById(R.id.genderTextView);
+        countryTextView=view.findViewById(R.id.countryTextView);
 
         fetchRandomUserData();
     }
@@ -96,7 +97,7 @@ public class BottomPersonFragment extends Fragment {
                     final String date = userObject.getJSONObject("dob").getString("date");
                     final String age = userObject.getJSONObject("dob").getString("age");
                     final String gender = userObject.getString("gender");
-
+                    final String country = userObject.getJSONObject("location").getString("country");
 
 
 
@@ -116,35 +117,40 @@ public class BottomPersonFragment extends Fragment {
 
                     //Première lettre du genre en majuscule, ne pas toucher !
                     String genderMaj = gender.substring(0, 1).toUpperCase() + gender.substring(1);
+                    if(isAdded()) {
+                        requireActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                nameTextView.setText(name);
+                                emailTextView.setText(email);
+                                phoneTextView.setText(phone);
+                                cityTextView.setText(city);
+                                streetTextView.setText(street);
 
-                    requireActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            nameTextView.setText(name);
-                            emailTextView.setText(email);
-                            phoneTextView.setText(phone);
-                            cityTextView.setText(city);
-                            streetTextView.setText(street);
+                                dateTextView.setText(finalFormattedDate);
+                                ageTextView.setText(age+" ans");
+                                genderTextView.setText(genderMaj);
+                                countryTextView.setText(country);
 
-                            dateTextView.setText(finalFormattedDate);
-                            ageTextView.setText(age+" ans");
-                            genderTextView.setText(genderMaj);
-
-                            // Load profile image using Glide library
-                            String profileImageUrl = null;
-                            try {
-                                profileImageUrl = userObject.getJSONObject("picture").getString("large");
-                            } catch (JSONException e) {
-                                throw new RuntimeException(e);
+                                // Load profile image using Glide library
+                                String profileImageUrl = null;
+                                try {
+                                    profileImageUrl = userObject.getJSONObject("picture").getString("large");
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                RequestOptions requestOptions = new RequestOptions()
+                                        .diskCacheStrategy(DiskCacheStrategy.ALL);
+                                Glide.with(requireContext())
+                                        .load(profileImageUrl)
+                                        .apply(requestOptions)
+                                        .into(profileImageView);
                             }
-                            RequestOptions requestOptions = new RequestOptions()
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL);
-                            Glide.with(requireContext())
-                                    .load(profileImageUrl)
-                                    .apply(requestOptions)
-                                    .into(profileImageView);
-                        }
-                    });
+                        });
+
+                    }
+
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
