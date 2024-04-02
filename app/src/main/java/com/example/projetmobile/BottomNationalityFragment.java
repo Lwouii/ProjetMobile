@@ -108,7 +108,12 @@ public class BottomNationalityFragment extends Fragment {
                                 String countryCode = country.getString("country_id");
                                 String countryName = codePays.mapCountryCodeToFullName(countryCode); // Mapping du code de pays au nom complet
                                 String probabilityPercentage = String.format("%.2f%%", country.getDouble("probability") * 100);
-                                nationalities.append(countryName).append(": ").append(probabilityPercentage).append("\n");
+                                nationalities.append(countryName)
+                                        .append(getCountryFlagEmoji(countryCode))
+                                        .append(": ")
+                                        .append(probabilityPercentage)
+                                        .append(" ")
+                                        .append("\n");
                             }
                             natiView.setText(nationalities.toString());
                         } catch (JSONException e) {
@@ -172,7 +177,12 @@ public class BottomNationalityFragment extends Fragment {
         }
         return result.toString();
     }
-
+    private String getCountryFlagEmoji(String countryCode) {
+        int countryCodeOffset = 0x1F1E6;
+        int firstChar = Character.codePointAt(countryCode, 0) - 0x41 + countryCodeOffset;
+        int secondChar = Character.codePointAt(countryCode, 1) - 0x41 + countryCodeOffset;
+        return new String(Character.toChars(firstChar)) + new String(Character.toChars(secondChar));
+    }
     private void hideKeyboard() {
         View view = getActivity().getCurrentFocus();
         if (view != null) {
