@@ -47,5 +47,9 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.query(DBContract.DogEntry.TABLE_NAME, null, null, null, null, null, null);
     }
+
+    public void deleteDB(Context context){
+        context.deleteDatabase(DATABASE_NAME);
+    }
 }
 

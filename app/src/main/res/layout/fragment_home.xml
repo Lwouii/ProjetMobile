@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -19,47 +22,45 @@
         android:textColor="@color/white"
         android:id="@+id/welcome"
         />
-
-
+<Button
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/design_default_color_primary_variant"
+    android:text="Clear DB"
+    android:id="@+id/clearButton"
+    android:layout_below="@id/welcome"
+    ></Button>
     <TextView
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This app will help you remember some informations !"
+        android:text="Here are your dogs :"
         android:textSize="25sp"
         android:layout_centerInParent="true"
         android:textColor="@color/white"
-        android:layout_below="@id/welcome"
-        android:gravity="center_horizontal"
-        android:id="@+id/t1"
-        />
+        android:layout_below="@id/clearButton"
+    android:gravity="center_horizontal"
+    android:id="@+id/t1"
+    />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="We could help you by showing you how your pets look like ! "
-        android:textSize="25sp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/lavender"
+    <LinearLayout
+        android:id="@+id/dogsLayout"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="40dp"
         android:layout_below="@id/t1"
-        android:id="@+id/t2"
-        android:gravity="center_horizontal"
-        />
-
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="If you're REALLY lost we could maybe help you by telling you EVERYTHING about you :)"
-        android:textSize="25sp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/design_default_color_primary_variant"
-        android:layout_below="@id/t2"
-        android:id="@+id/t4"
-        android:gravity="center_horizontal"
-        />
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/catsLayout"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginRight="40dp"
+        android:layout_below="@id/t1"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+    </LinearLayout>
 
 </RelativeLayout>
+</ScrollView>

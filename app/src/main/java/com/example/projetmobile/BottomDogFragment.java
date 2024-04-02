@@ -35,6 +35,7 @@ public class BottomDogFragment extends Fragment {
     EditText dogText ;
     TextView dogName ;
     String imageUrl ;
+    String name;
 
     public BottomDogFragment() {
 
@@ -56,19 +57,20 @@ public class BottomDogFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_bottom_dog, container, false);
 
         dogText = view.findViewById(R.id.dogText);
-         dogName = view.findViewById(R.id.dogName);
+        dogName = view.findViewById(R.id.dogName);
         ImageView dogImageView = view.findViewById(R.id.dogImageView);
         Button dogButton = view.findViewById(R.id.dogButton);
 
         dogButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = dogText.getText().toString().trim();
+                name = dogText.getText().toString().trim();
                 if (name.isEmpty()) {
                     Toast.makeText(getContext(), "Entrez un nom je vous prie !", Toast.LENGTH_SHORT).show();
                 } else {
-                    dogName.setText(name);
                     callAPIAndDisplayDog(dogImageView);
+                    System.out.println("LE NOM EST "+name);
+
                     dogText.setText(""); // Efface le contenu de l'EditText après l'appui sur le bouton
                     hideKeyboard(); // Cache le clavier après l'appui sur le bouton
                 }
@@ -85,6 +87,7 @@ public class BottomDogFragment extends Fragment {
             @Override
             public void run() {
                 String http = getDataFromHTTP("https://dog.ceo/api/breeds/image/random");
+
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -93,6 +96,12 @@ public class BottomDogFragment extends Fragment {
                             String message = jsonObject.getString("message");
                             imageUrl=message;
                             Picasso.get().load(message).into(dogImageView);
+                            boolean isInserted = dbHandler.addDog(name, imageUrl);
+                            if (isInserted) {
+                                Toast.makeText(getContext(), "Chien ajouté à la base de données", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getContext(), "Erreur lors de l'ajout du chien à la base de données", Toast.LENGTH_SHORT).show();
+                            }
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
                         }
@@ -100,13 +109,7 @@ public class BottomDogFragment extends Fragment {
                 });
             }
         });
-        String name = dogText.getText().toString().trim();
-        boolean isInserted = dbHandler.addDog(name, imageUrl);
-        if (isInserted) {
-            Toast.makeText(getContext(), "Chien ajouté à la base de données", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getContext(), "Erreur lors de l'ajout du chien à la base de données", Toast.LENGTH_SHORT).show();
-        }
+
 
     }
 
