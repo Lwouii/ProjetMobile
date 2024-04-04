@@ -8,31 +8,25 @@
 
 
     <EditText
+        android:gravity="center"
+        android:paddingTop="50dp"
         android:id="@+id/nomEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:padding="5dp"
-        android:textAlignment="center"
         android:hint="Entrez votre nom"
-        android:maxLines="1"
-        android:inputType="text"
-        android:background="@drawable/cadre"
-        android:drawableRight="@drawable/baseline_search_24"
+        android:textColorHint="@color/white"
         />
-
-
     <Button
         android:id="@+id/whoButton"
         android:backgroundTint="@color/design_default_color_primary_variant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/nomEditText"
+        android:layout_below="@+id/nomEditText"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
-        android:text="Créer"
-        ></Button>
+        android:text="Valider"
+        />
 
     <TextView
         android:id="@+id/natiViewLabel"
