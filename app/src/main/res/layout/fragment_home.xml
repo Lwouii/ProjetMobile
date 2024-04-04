@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/colorPrimary">
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -9,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".HomeFragment"
-        android:background="@color/black">
+        >
 
         <TextView
             android:id="@+id/welcome"
@@ -18,7 +19,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
             android:text="Welcome !"
-            android:textColor="@color/white"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="60sp" />
         <TextView
             android:id="@+id/welcomepets"
@@ -28,7 +29,7 @@
             android:layout_marginTop="20dp"
             android:text="Voilà tes animaux : "
             android:layout_below="@id/welcome"
-            android:textColor="@color/white"
+            android:textColor="?android:attr/textColorPrimary"
             android:textSize="40dp" />
 
 
@@ -41,7 +42,7 @@
             android:layout_margin="10dp"
             android:gravity="center_horizontal"
             android:text="Here are your dogs :"
-            android:textColor="@color/lavender"
+            android:textColor="?android:attr/statusBarColor"
             android:textSize="25sp" />
 
         <LinearLayout
@@ -61,7 +62,7 @@
             android:layout_below="@id/dogsLayout"
             android:layout_margin="10dp"
             android:text="Here are your cats :"
-            android:textColor="@color/lavender"
+            android:textColor="?android:attr/statusBarColor"
             android:textSize="25sp" />
 
         <LinearLayout

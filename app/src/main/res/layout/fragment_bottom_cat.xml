@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BottomCatFragment">
@@ -12,6 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:padding="5dp"
+        android:textColorHint="?android:attr/textColorPrimary"
         android:textAlignment="center"
         android:hint="Entrez le nom de votre chat"
         android:maxLines="1"
@@ -26,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/catText"
             android:layout_centerHorizontal="true"
-            android:textColor="@color/white"
+            android:textColor="?android:attr/textColorPrimary"
             android:text="Créer"
             ></Button>
 
@@ -35,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/catButton"
         android:textSize="17sp"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/catName"></TextView>

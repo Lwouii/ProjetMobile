@@ -16,19 +16,19 @@
         android:text="Version 1.0"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="60dp"
         android:layout_marginEnd="20dp"
         />
     <Button
         android:drawableRight="@drawable/baseline_delete_24"
         android:id="@+id/clearButton"
         android:textColor="?android:attr/textColorPrimary"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_below="@id/switchTheme"
         android:backgroundTint="@color/design_default_color_primary_variant"
-        android:text="Clear DB" />
+        android:text="Vider la bdd" />
 
     <TextView
         android:id="@+id/textViewParametre"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="?android:attr/textColorPrimary"
-        android:text="Mode Claire"
+        android:text="Mode Clair"
         android:layout_below="@+id/textViewParametre"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"

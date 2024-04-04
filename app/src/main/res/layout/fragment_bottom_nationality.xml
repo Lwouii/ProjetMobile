@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BottomNationalityFragment">
@@ -12,6 +13,7 @@
         android:hint="Entrez votre nom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColorHint="?android:attr/textColorPrimary"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:padding="5dp"
@@ -29,7 +31,7 @@
         android:id="@+id/whoButton"
         android:layout_below="@id/nomEditText"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/textColorPrimary"
         android:backgroundTint="@color/design_default_color_primary_variant"
         android:text="Créer"
         ></Button>
@@ -40,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="Vos Nationnalités"
         android:textSize="25sp"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_marginLeft="20dp"
         android:layout_below="@+id/whoButton"
         android:layout_marginTop="60dp"
@@ -57,7 +59,7 @@
         />
     <TextView
         android:id="@+id/natiView"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/textColorPrimary"
         android:textColorHint="@color/white"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
@@ -73,7 +75,7 @@
         android:layout_height="wrap_content"
         android:text="Votre  Genre :"
         android:textSize="25sp"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_marginLeft="20dp"
         android:layout_below="@+id/natiView"
         android:layout_marginTop="20dp"
@@ -81,7 +83,7 @@
         />
     <TextView
         android:id="@+id/genderView"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/textColorPrimary"
         android:textColorHint="@color/white"
         android:layout_marginLeft="20dp"
         android:layout_width="wrap_content"
@@ -95,7 +97,7 @@
         android:layout_height="wrap_content"
         android:text="♀"
         android:textSize="25sp"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/natiView"
@@ -108,7 +110,7 @@
         android:layout_height="wrap_content"
         android:text="♂"
         android:textSize="25sp"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/textColorPrimary"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@+id/natiView"
