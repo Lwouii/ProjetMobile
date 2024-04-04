@@ -2,7 +2,9 @@ package com.example.projetmobile;
 
 import android.annotation.SuppressLint;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,12 +25,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        clearDB = view.findViewById(R.id.clearButton);
-        clearDB.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                dbHandler.deleteDB(requireContext());
-            }
-        });
+
 
         dbHandler = new DBHandler(getContext());
         LinearLayout dogsLayout = view.findViewById(R.id.dogsLayout);
@@ -54,13 +51,24 @@ public class HomeFragment extends Fragment {
                 @SuppressLint("Range")
                 String imageUrl = cursor.getString(cursor.getColumnIndex(imageUrlColumn));
 
-                // Créer un nouveau LinearLayout pour chaque animal
+                // nouveau LinearLayout pour chaque animal
                 LinearLayout petInfoLayout = new LinearLayout(getContext());
                 petInfoLayout.setOrientation(LinearLayout.VERTICAL);
+                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                layoutParams.setMargins(0, 10, 0, 40);
+                petInfoLayout.setLayoutParams(layoutParams);
+                petInfoLayout.setGravity(Gravity.CENTER);
 
-                // Créer TextView pour le nom de l'animal
+
+                //TextView nom de l'animal
                 TextView petNameTextView = new TextView(getContext());
-                petNameTextView.setText(name);
+                petNameTextView.setText(name+" :");
+                petNameTextView.setLayoutParams(layoutParams);
+               petNameTextView.setGravity(Gravity.CENTER_VERTICAL);
+                petNameTextView.setTextColor(Color.WHITE);
+                petNameTextView.setTextSize(20);
+
 
                 // Créer ImageView pour l'image de l'animal
                 ImageView petImageView = new ImageView(getContext());
@@ -69,6 +77,10 @@ public class HomeFragment extends Fragment {
                 // Ajouter TextView et ImageView au LinearLayout de l'animal
                 petInfoLayout.addView(petNameTextView);
                 petInfoLayout.addView(petImageView);
+                petImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                petImageView.getLayoutParams().height = 550;
+
+
 
                 // Ajouter le LinearLayout de l'animal au LinearLayout principal
                 layout.addView(petInfoLayout);

@@ -16,25 +16,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_margin="50dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="60dp"
             android:text="Welcome !"
             android:textColor="@color/white"
             android:textSize="60sp" />
-
-        <Button
-            android:id="@+id/clearButton"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/welcomepets"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Voilà tes animaux : "
             android:layout_below="@id/welcome"
-            android:backgroundTint="@color/design_default_color_primary_variant"
-            android:text="Clear DB" />
+            android:textColor="@color/white"
+            android:textSize="40dp" />
+
+
 
         <TextView
             android:id="@+id/dogTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/clearButton"
+            android:layout_below="@id/welcomepets"
             android:layout_margin="10dp"
             android:gravity="center_horizontal"
             android:text="Here are your dogs :"
@@ -45,11 +48,10 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/dogsLayout"
             android:layout_below="@id/dogTitle"
-            android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_centerInParent="true"
             android:background="@drawable/rounded_corners"/>
 
         <TextView
@@ -64,14 +66,22 @@
 
         <LinearLayout
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
             android:id="@+id/catsLayout"
+            android:layout_centerInParent="true"
             android:layout_below="@id/catTitle"
-            android:layout_marginTop="20dp"
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
             android:background="@drawable/rounded_corners" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/design_default_color_secondary_variant"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_below="@id/catsLayout"
+            android:text="Si aucun animal est affiché, ajoute en dans les onglets Dog et Cat !"></TextView>
 
     </RelativeLayout>
 </ScrollView>

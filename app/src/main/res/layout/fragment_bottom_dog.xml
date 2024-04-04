@@ -13,11 +13,12 @@
         android:layout_marginTop="60dp"
         android:padding="5dp"
         android:textAlignment="center"
-        android:hint="Entrez le nom de votre chien"
+
         android:maxLines="1"
         android:inputType="text"
         android:background="@drawable/cadre"
         android:drawableRight="@drawable/baseline_search_24"
+        android:hint="Entrez le nom de votre chien"
         android:id="@+id/dogText"></EditText>
     <Button
         android:layout_width="match_parent"
@@ -34,8 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/dogButton"
-        android:textSize="17sp"
-        android:textColor="@color/lavender"
+        android:textSize="22sp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
         android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
         android:id="@+id/dogName"></TextView>
