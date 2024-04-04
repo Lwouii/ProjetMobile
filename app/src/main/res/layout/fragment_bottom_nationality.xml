@@ -31,7 +31,7 @@
         android:id="@+id/whoButton"
         android:layout_below="@id/nomEditText"
         android:layout_centerHorizontal="true"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/white"
         android:backgroundTint="@color/design_default_color_primary_variant"
         android:text="Créer"
         ></Button>

@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/catText"
             android:layout_centerHorizontal="true"
-            android:textColor="?android:attr/textColorPrimary"
+            android:textColor="@color/white"
             android:text="Créer"
             ></Button>
 
