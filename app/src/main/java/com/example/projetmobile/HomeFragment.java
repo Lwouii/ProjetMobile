@@ -2,7 +2,14 @@ package com.example.projetmobile;
 
 import android.annotation.SuppressLint;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,8 +20,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.squareup.picasso.Picasso;
 
 public class HomeFragment extends Fragment {
@@ -61,6 +73,7 @@ public class HomeFragment extends Fragment {
                 petInfoLayout.setGravity(Gravity.CENTER);
 
 
+
                 //TextView nom de l'animal
                 TextView petNameTextView = new TextView(getContext());
                 petNameTextView.setText(name+" :");
@@ -74,10 +87,12 @@ public class HomeFragment extends Fragment {
                 ImageView petImageView = new ImageView(getContext());
                 Picasso.get().load(imageUrl).into(petImageView);
 
+
+
                 // Ajouter TextView et ImageView au LinearLayout de l'animal
                 petInfoLayout.addView(petNameTextView);
                 petInfoLayout.addView(petImageView);
-                petImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                //petImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                 petImageView.getLayoutParams().height = 550;
 
 
