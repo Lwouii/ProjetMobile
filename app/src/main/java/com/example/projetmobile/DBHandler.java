@@ -1,12 +1,24 @@
 package com.example.projetmobile;
 
+import static java.security.AccessController.getContext;
+
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
+import java.util.List;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Color;
+import android.view.Gravity;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.projetmobile.DBContract;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "pet_database";
@@ -65,17 +77,52 @@ public class DBHandler extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public Cursor getAllDogs() {
+    public List<Pet> getAllDogs() {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(DBContract.DogEntry.TABLE_NAME, null, null, null, null, null, null);
+        Cursor cursor = db.query(DBContract.DogEntry.TABLE_NAME, null, null, null, null, null, null);
+        return cursorToDogList(cursor);
     }
 
-    public Cursor getAllCats() {
+    public List<Pet> getAllCats() {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.query(DBContract.CatEntry.TABLE_NAME, null, null, null, null, null, null);
+        Cursor cursor = db.query(DBContract.CatEntry.TABLE_NAME, null, null, null, null, null, null);
+        return cursorToCatList(cursor);
     }
 
     public void deleteDB(Context context) {
         context.deleteDatabase(DATABASE_NAME);
     }
+
+    @SuppressLint("Range")
+    public List<Pet> cursorToDogList(Cursor cursor) {
+        List<Pet> pets = new ArrayList<>();
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                Pet pet = new Pet();
+                pet.setNom(cursor.getString(cursor.getColumnIndex(DBContract.DogEntry.COLUMN_NAME)));
+                pet.setUrl(cursor.getString(cursor.getColumnIndex(DBContract.DogEntry.COLUMN_IMAGE_URL)));
+                pets.add(pet);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        return pets;
+    }
+
+    @SuppressLint("Range")
+    public List<Pet> cursorToCatList(Cursor cursor) {
+        List<Pet> pets = new ArrayList<>();
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                Pet pet = new Pet();
+                pet.setNom(cursor.getString(cursor.getColumnIndex(DBContract.CatEntry.COLUMN_NAME)));
+                pet.setUrl(cursor.getString(cursor.getColumnIndex(DBContract.CatEntry.COLUMN_IMAGE_URL)));
+                pets.add(pet);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+        return pets;
+    }
 }
+
+
+
