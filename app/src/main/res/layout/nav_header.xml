@@ -19,14 +19,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Informations à changer"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/textColorPrimary"
         android:textStyle="bold"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="louis.charrais@etu.univ-tours.fr"
-        android:textColor="@color/white"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="14sp"
         android:layout_marginBottom="16dp"/>
 

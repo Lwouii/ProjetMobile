@@ -40,6 +40,7 @@ public class BottomNationalityFragment extends Fragment {
     private TextView genderViewLabel;
     private TextView genderViewFe;
     private TextView genderViewHo;
+    private TextView nameTextViewLabel;
 
     public BottomNationalityFragment() {
         // Required empty public constructor
@@ -58,6 +59,7 @@ public class BottomNationalityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_bottom_nationality, container, false);
 
         codePays = new CodePays();
+        nameTextViewLabel = view.findViewById(R.id.nameTextViewLabel);
         nomText = view.findViewById(R.id.nomEditText);
         genderView = view.findViewById(R.id.genderView);
         natiView = view.findViewById(R.id.natiView);
