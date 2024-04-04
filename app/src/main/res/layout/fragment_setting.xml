@@ -25,7 +25,8 @@
         android:textColor="?android:attr/textColorPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textViewParametre"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/switchTheme"
         android:backgroundTint="@color/design_default_color_primary_variant"
         android:text="Clear DB" />
 

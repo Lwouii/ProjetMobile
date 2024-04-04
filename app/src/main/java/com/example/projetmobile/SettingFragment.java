@@ -57,8 +57,7 @@ public class SettingFragment extends Fragment {
             }
         });
 
-        return view;
-        View view = inflater.inflate(R.layout.fragment_setting, container, false);
+
 
         dbHandler = new DBHandler(getContext());
         Button clearDB = view.findViewById(R.id.clearButton);

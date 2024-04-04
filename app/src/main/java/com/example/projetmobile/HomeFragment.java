@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment {
                 TextView petNameTextView = new TextView(getContext());
                 petNameTextView.setText(name+" :");
                 petNameTextView.setLayoutParams(layoutParams);
-               petNameTextView.setGravity(Gravity.CENTER_VERTICAL);
+                petNameTextView.setGravity(Gravity.CENTER_VERTICAL);
                 petNameTextView.setTextColor(Color.WHITE);
                 petNameTextView.setTextSize(20);
 
