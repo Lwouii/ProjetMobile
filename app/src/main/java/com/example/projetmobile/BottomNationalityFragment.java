@@ -37,9 +37,8 @@ public class BottomNationalityFragment extends Fragment {
     private EditText nomText;
     private TextView genderView;
     private TextView natiView;
+    private TextView natiViewLabel;
     private TextView genderViewLabel;
-    private TextView genderViewFe;
-    private TextView genderViewHo;
     private TextView nameTextViewLabel;
 
     public BottomNationalityFragment() {
@@ -63,9 +62,9 @@ public class BottomNationalityFragment extends Fragment {
         nomText = view.findViewById(R.id.nomEditText);
         genderView = view.findViewById(R.id.genderView);
         natiView = view.findViewById(R.id.natiView);
+        natiViewLabel = view.findViewById(R.id.natiViewLabel);
         genderViewLabel = view.findViewById(R.id.genderViewLabel);
-        genderViewFe = view.findViewById(R.id.genderViewFe);
-        genderViewHo = view.findViewById(R.id.genderViewHo);
+
 
         Button whoButton = view.findViewById(R.id.whoButton);
 
@@ -77,11 +76,14 @@ public class BottomNationalityFragment extends Fragment {
                     Toast.makeText(getContext(), "Entrez un nom s'il vous plaît!", Toast.LENGTH_SHORT).show();
                 } else {
                     nomText.setText(name);
+                    String majName=name.substring(0, 1).toUpperCase() + name.substring(1);
+                    nameTextViewLabel.setText("Votre prénom :"+majName);
                     callAPIAndDisplayData(name);
                     hideKeyboard(); // Cache le clavier après l'appui sur le bouton
                     // Rendre l'EditText et le Button invisibles
-                    nomText.setVisibility(View.GONE);
-                    whoButton.setVisibility(View.GONE);
+                    natiViewLabel.setVisibility(View.VISIBLE);
+                    whoButton.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -98,6 +100,7 @@ public class BottomNationalityFragment extends Fragment {
             @Override
             public void run() {
                 String nationalizeAPIResult = getDataFromHTTP("https://api.nationalize.io/?name=" + name);
+
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
@@ -118,6 +121,8 @@ public class BottomNationalityFragment extends Fragment {
                                         .append("\n");
                             }
                             natiView.setText(nationalities.toString());
+                            natiView.setVisibility(View.VISIBLE);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -138,12 +143,11 @@ public class BottomNationalityFragment extends Fragment {
                             JSONObject jsonObject = new JSONObject(genderizeAPIResult);
                             String gender = jsonObject.getString("gender");
                             if (gender.equals("male")) {
-                                genderView.setText("Homme");
-                                genderViewHo.setVisibility(View.VISIBLE); // Rendre visible le TextView pour le symbole masculin
+                                genderView.setText("Homme \u2642"); // Pour le symbole masculin ♂
                             } else {
-                                genderView.setText("Femme");
-                                genderViewFe.setVisibility(View.VISIBLE); // Rendre visible le TextView pour le symbole féminin
+                                genderView.setText("Femme \u2640"); // Pour le symbole féminin ♀
                             }
+                            genderView.setVisibility(View.VISIBLE);
                             genderViewLabel.setVisibility(View.VISIBLE); // Rendre visible le TextView pour le label du genre
                         } catch (JSONException e) {
                             e.printStackTrace();

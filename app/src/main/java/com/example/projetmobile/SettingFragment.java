@@ -37,7 +37,7 @@ public class SettingFragment extends Fragment {
         sharedPreferences = getActivity().getPreferences(Context.MODE_PRIVATE);
 
         // Restaurer l'état du switch à partir des préférences partagées
-        boolean isNightMode = sharedPreferences.getBoolean("nightMode", true);
+        boolean isNightMode = sharedPreferences.getBoolean("nightMode", false); // Modifié pour obtenir false
         switchTheme.setChecked(isNightMode);
 
         // Ajouter un écouteur sur le Switch pour détecter les changements d'état
@@ -51,7 +51,7 @@ public class SettingFragment extends Fragment {
 
                 if (isChecked) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                } else { // Sinon, basculer vers le mode clair
+                } else {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 }
             }

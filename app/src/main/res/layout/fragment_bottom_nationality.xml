@@ -36,86 +36,73 @@
         android:text="Créer"
         ></Button>
 
-    <TextView
-        android:id="@+id/natiViewLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Vos Nationnalités"
-        android:textSize="25sp"
-        android:textColor="?android:attr/textColorPrimary"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@+id/whoButton"
-        android:layout_marginTop="60dp"
-        android:visibility="invisible"
-        />
+
     <TextView
         android:id="@+id/nameTextViewLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/whoButton"
         android:layout_marginTop="50dp"
-        android:textColor="?android:attr/textColorPrimary"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/design_default_color_primary_variant"
         android:textSize="24sp"
+        />
+    <TextView
+        android:id="@+id/natiViewLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vos Nationalités :"
+        android:textSize="25sp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/nameTextViewLabel"
+        android:layout_marginTop="60dp"
+        android:visibility="invisible"
         />
     <TextView
         android:id="@+id/natiView"
         android:textColor="?android:attr/textColorPrimary"
-        android:textColorHint="@color/white"
+        android:textColorHint="?android:attr/textColorPrimary"
         android:layout_marginLeft="20dp"
+        android:hint="Vos informations de nationalité s'afficheront ici"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:layout_below="@+id/natiViewLabel"
+        android:background="@drawable/rounded_corners"
+        android:visibility="invisible"
+
         />
 
-    <TextView
-        android:id="@+id/genderViewLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Votre  Genre :"
-        android:textSize="25sp"
-        android:textColor="?android:attr/textColorPrimary"
-        android:layout_marginLeft="20dp"
-        android:layout_below="@+id/natiView"
-        android:layout_marginTop="20dp"
-        android:visibility="invisible"
-        />
-    <TextView
-        android:id="@+id/genderView"
-        android:textColor="?android:attr/textColorPrimary"
-        android:textColorHint="@color/white"
-        android:layout_marginLeft="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/genderViewLabel"
-        />
-    <TextView
-        android:id="@+id/genderViewFe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="♀"
-        android:textSize="25sp"
-        android:textColor="?android:attr/textColorPrimary"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/natiView"
-        android:layout_below="@+id/genderViewLabel"
-        android:visibility="invisible"
-        />
-    <TextView
-        android:id="@+id/genderViewHo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="♂"
-        android:textSize="25sp"
-        android:textColor="?android:attr/textColorPrimary"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@+id/natiView"
-        android:layout_below="@+id/genderViewLabel"
-        android:visibility="invisible"
-        />
+        <TextView
+            android:id="@+id/genderViewLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Votre  Genre :"
+            android:textSize="25sp"
+            android:textColor="?android:attr/textColorPrimary"
+            android:layout_marginLeft="20dp"
+            android:layout_below="@+id/natiView"
+            android:layout_marginTop="20dp"
+            android:visibility="invisible"
+            />
+        <TextView
+            android:hint="Votre genre s'affichera ici"
+            android:id="@+id/genderView"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textColorHint="?android:attr/textColorPrimary"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/genderViewLabel"
+            android:background="@drawable/rounded_corners"
+            android:visibility="invisible"
+
+            />
+
+
+
 
 </RelativeLayout>

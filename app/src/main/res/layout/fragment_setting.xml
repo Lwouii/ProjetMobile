@@ -22,7 +22,7 @@
     <Button
         android:drawableRight="@drawable/baseline_delete_24"
         android:id="@+id/clearButton"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -48,10 +48,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="?android:attr/textColorPrimary"
-        android:text="Mode Clair"
+        android:text="Dark mode"
         android:layout_below="@+id/textViewParametre"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
+        android:checked="false"
 
         />
 </RelativeLayout>

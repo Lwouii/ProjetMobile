@@ -38,10 +38,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/dogButton"
         android:textSize="22sp"
-        android:layout_centerInParent="true"
         android:textColor="?android:attr/textColorPrimary"
         android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:id="@+id/dogName"></TextView>
     <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/dogImageView"
