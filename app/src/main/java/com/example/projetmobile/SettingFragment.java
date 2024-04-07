@@ -1,9 +1,12 @@
 package com.example.projetmobile;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
@@ -61,14 +64,33 @@ public class SettingFragment extends Fragment {
 
         dbHandler = new DBHandler(getContext());
         Button clearDB = view.findViewById(R.id.clearButton);
-        clearDB.setOnClickListener(new View.OnClickListener() {
+        clearDB.setOnClickListener(this::showConfirmationDialog);
 
-            public void onClick(View v) {
-                Toast.makeText(getContext(), "Base de données vidée !", Toast.LENGTH_SHORT).show();
-                dbHandler.deleteDB(requireContext());
-            }
 
-        });
         return view;
     }
+    @SuppressLint({"ResourceAsColor", "ResourceType"})
+    private void showConfirmationDialog(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.confirmation_delete, null);
+        builder.setView(dialogView)
+                .setPositiveButton("Valider", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "Base de données vidée !", Toast.LENGTH_SHORT).show();
+                        dbHandler.deleteDB(requireContext());
+                    }
+                })
+                .setNegativeButton("Annuler", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+    }
+
 }
