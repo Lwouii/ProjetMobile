@@ -81,8 +81,10 @@ public class BottomNationalityFragment extends Fragment {
                     callAPIAndDisplayData(name);
                     hideKeyboard(); // Cache le clavier après l'appui sur le bouton
                     // Rendre l'EditText et le Button invisibles
+                    nomText.setVisibility(View.GONE);
+                    whoButton.setVisibility(View.GONE);
+                    // Rendre les TextView pour les résultats visibles
                     natiViewLabel.setVisibility(View.VISIBLE);
-                    whoButton.setVisibility(View.VISIBLE);
 
                 }
             }
