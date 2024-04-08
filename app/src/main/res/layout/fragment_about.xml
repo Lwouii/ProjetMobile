@@ -9,9 +9,10 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/infotextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About Us Fragment"
+        android:text="Information a remplir"
         android:textSize="30sp"
         android:layout_centerInParent="true"
         android:textColor="@color/lavender"
