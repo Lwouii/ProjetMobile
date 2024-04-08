@@ -1,6 +1,9 @@
 package com.example.projetmobile;
 
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.ColorStateList;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,12 +25,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
+        ConnectivityReceiver.ConnectivityReceiverListener{
 
     private DrawerLayout drawerLayout;
     BottomNavigationView bottomNavigationView;
     FragmentManager fragmentManager;
     Toolbar toolbar;
+    private ConnectivityReceiver connectivityReceiver;
+
 
     FloatingActionButton fab;
 
@@ -35,6 +41,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        connectivityReceiver = new ConnectivityReceiver(this);
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(connectivityReceiver, intentFilter);
+
+
         fab = findViewById(R.id.fab);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -130,6 +145,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Désenregistrer le BroadcastReceiver lors de la destruction de l'activité
+        unregisterReceiver(connectivityReceiver);
+    }
+
+    @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int itemId = menuItem.getItemId();
         if (itemId == R.id.nav_home) {
@@ -160,5 +182,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        if (!isConnected) {
+            // Afficher le fragment d'erreur si la connexion est perdue
+            ErrorFragment errorFragment = new ErrorFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(android.R.id.content, errorFragment);
+            transaction.commit();
+        }
+    }
+
+    @Override
+    public void onAirplaneModeChanged(boolean isAirplaneModeOn) {
+        if (isAirplaneModeOn) {
+            // Gérer l'état du mode avion ici
+        }
     }
 }
