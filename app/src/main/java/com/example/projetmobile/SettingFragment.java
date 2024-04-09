@@ -43,7 +43,7 @@ public class SettingFragment extends Fragment {
         boolean isNightMode = sharedPreferences.getBoolean("nightMode", false); // Modifié pour obtenir false
         switchTheme.setChecked(isNightMode);
 
-        // Ajouter un écouteur sur le Switch pour détecter les changements d'état
+        // detection changement etat sur le switch
         switchTheme.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

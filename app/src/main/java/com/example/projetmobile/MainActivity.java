@@ -94,25 +94,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (fragment != null) {
                     openFragment(fragment);
 
-                    // Changer la couleur de l'icône du bouton flottant à la couleur de base (noir)
                     fab.setImageTintList(ColorStateList.valueOf(getColor(R.color.black)));
 
-                    // Changer la couleur de l'icône du bouton du bas cliqué à blanc et les autres à noir
                     int[][] states = new int[][] {
                             new int[] { android.R.attr.state_checked}, // État : cliqué
                             new int[] {-android.R.attr.state_checked} // État : non cliqué
                     };
                     int[] colors = new int[] {
-                            getColor(R.color.white), // Couleur pour l'état cliqué
-                            getColor(R.color.black)  // Couleur pour l'état non cliqué
+                            getColor(R.color.white), // Couleur état cliqué
+                            getColor(R.color.black)  // Couleur état non cliqué
                     };
 
                     ColorStateList textColorStateList = new ColorStateList(states, colors);
                     ColorStateList colorStateList = new ColorStateList(states, colors);
                     bottomNavigationView.setItemIconTintList(colorStateList);
                     bottomNavigationView.setItemTextColor(textColorStateList);
-                    // Changer la couleur de l'icône de la barre d'outils à blanc
-                    //   toolbar.setNavigationIcon(R.drawable.ic_menu_white);
+
 
                     return true;
                 }
@@ -129,7 +126,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View v) {
                 openFragment(new HomeFragment());
-                // Change la couleur de l'icône du bouton flottant à la couleur de base
                 fab.setImageTintList(ColorStateList.valueOf(getColor(R.color.white)));
                 bottomNavigationView.setItemIconTintList(ColorStateList.valueOf(getColor(R.color.black)));
                 bottomNavigationView.setItemTextColor(ColorStateList.valueOf(getColor(R.color.black)));
@@ -140,14 +136,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            // navigationView.setCheckedItem(R.id.nav_home);
         }
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Désenregistrer le BroadcastReceiver lors de la destruction de l'activité
+        // Supprime BroadcastReceiver quand on destroy l'activité
         unregisterReceiver(connectivityReceiver);
     }
 
@@ -187,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
         if (!isConnected) {
-            // Afficher le fragment d'erreur si la connexion est perdue
+            // Afficher le fragment d'erreur si pas de connexion démarrage
             ErrorFragment errorFragment = new ErrorFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(android.R.id.content, errorFragment);
@@ -198,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onAirplaneModeChanged(boolean isAirplaneModeOn) {
         if (isAirplaneModeOn) {
-            // Gérer l'état du mode avion ici
+
         }
     }
 }

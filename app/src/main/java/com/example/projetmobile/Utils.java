@@ -44,7 +44,7 @@ public class Utils {
             return pictureObject.getString("large");
         } catch (JSONException e) {
             e.printStackTrace();
-            return null; // Ou une autre valeur par défaut selon votre besoin
+            return null;
         }
     }
 }
