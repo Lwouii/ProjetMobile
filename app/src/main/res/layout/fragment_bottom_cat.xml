@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="70dp"
         android:padding="5dp"
         android:textColorHint="?android:attr/textColorPrimary"
         android:textAlignment="center"
@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/catText"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
             android:textColor="@color/white"
             android:text="Créer"
             ></Button>

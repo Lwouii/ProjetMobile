@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:textColorHint="?android:attr/textColorPrimary"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="70dp"
         android:padding="5dp"
         android:textAlignment="center"
 
@@ -32,6 +32,7 @@
         android:layout_below="@id/nomEditText"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
+        android:layout_marginTop="5dp"
         android:backgroundTint="@color/design_default_color_primary_variant"
         android:text="Créer"
         >
