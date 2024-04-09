@@ -27,9 +27,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
         android:text="Utilisation de l'application :"
-        android:textSize="25sp"
         android:gravity="left"
-        android:textColor="@color/design_default_color_primary"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold"
         />
     <TextView
         android:id="@+id/natioLabel"
@@ -95,7 +96,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-
         android:text="La page Dog vous permettra de générer un chien à partir d'un nom. Le nom de ce chien et sa photo seront enregistrés, vous pourrez accéder à tous vos chiens dans l'accueil Home."
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
@@ -142,7 +142,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-
         android:text="La page Home vous permettra de voir tous les chiens et chats que vous avez crée. Si vous vouhaitez vider la base, pas de panique, vous pouvez passer par les paramètres."
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
