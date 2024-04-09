@@ -7,13 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".ShareFragment">
 
-
+   <TextView
+       android:id="@+id/textViewMessage"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:layout_marginTop="60dp"
+       android:text="Si vous aimez notre application, partagez-la !"
+       android:textColor="?android:attr/textColorPrimary"
+       android:textSize="20sp"
+       android:textStyle="bold"
+       android:gravity="center"
+       />
    <Button
        android:id="@+id/buttonShare"
-       android:layout_marginTop="50dp"
+       android:layout_below="@+id/textViewMessage"
        android:backgroundTint="@color/design_default_color_primary_variant"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
        android:layout_centerHorizontal="true"
        android:textColor="@color/white"
        android:text="Partager"
