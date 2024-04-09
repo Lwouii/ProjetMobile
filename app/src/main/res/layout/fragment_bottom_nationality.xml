@@ -7,7 +7,6 @@
     tools:context=".BottomNationalityFragment">
 
 
-
     <EditText
         android:id="@+id/nomEditText"
         android:hint="Entrez votre nom"

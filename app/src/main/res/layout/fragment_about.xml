@@ -16,7 +16,6 @@
         android:layout_marginTop="60dp"
         android:textSize="15sp"
         android:gravity="center"
-        android:layout_marginLeft="20dp"
         android:textColor="@color/lavender"
         />
     <TextView
@@ -26,8 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="Utilisation :"
+        android:layout_marginBottom="30dp"
+        android:text="Utilisation de l'application :"
         android:textSize="25sp"
         android:gravity="left"
         android:textColor="@color/design_default_color_primary"
@@ -41,7 +40,7 @@
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/lavender"
         />
     <TextView
         android:id="@+id/natio"
@@ -64,7 +63,7 @@
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/lavender"
         />
     <TextView
         android:id="@+id/person"
@@ -88,7 +87,7 @@
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/lavender"
         />
     <TextView
         android:id="@+id/dog"
@@ -112,7 +111,7 @@
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/lavender"
         />
     <TextView
         android:id="@+id/cat"
@@ -120,7 +119,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-
         android:text="La page Cat vous permettra de générer un chat à partir d'un nom. Le nom de ce chat et sa photo seront enregistrés, vous pourrez accéder à tous vos chats dans l'accueil Home."
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
@@ -136,7 +134,7 @@
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="@color/lavender"
         />
     <TextView
         android:id="@+id/home"
