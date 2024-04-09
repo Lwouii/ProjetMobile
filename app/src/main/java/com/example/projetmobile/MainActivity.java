@@ -158,7 +158,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (itemId == R.id.nav_about) {
             openFragment(new AboutFragment());
         } else if (itemId == R.id.nav_logout) {
-            Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();
+            finish();
+            System.exit(0);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
