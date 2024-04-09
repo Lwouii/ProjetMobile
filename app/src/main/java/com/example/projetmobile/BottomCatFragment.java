@@ -68,15 +68,15 @@ public class BottomCatFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 name = catText.getText().toString().trim();
-                String majName = name.substring(0, 1).toUpperCase() + name.substring(1);
 
                 if (name.isEmpty()) {
                     Toast.makeText(getContext(), "Entrez un nom je vous prie !", Toast.LENGTH_SHORT).show();
                 } else {
+                    String majName = name.substring(0, 1).toUpperCase() + name.substring(1);
                     callAPIAndDisplayCat(catImageView);
                     catName.setText(majName);
-                    catText.setText(""); // Efface le contenu de l'EditText après l'appui sur le bouton
-                    hideKeyboard(); // Cache le clavier après l'appui sur le bouton
+                    catText.setText("");
+                    hideKeyboard();
                 }
             }
         });

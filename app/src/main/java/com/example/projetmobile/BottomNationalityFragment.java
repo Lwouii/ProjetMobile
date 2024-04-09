@@ -79,8 +79,8 @@ public class BottomNationalityFragment extends Fragment {
                     String majName=name.substring(0, 1).toUpperCase() + name.substring(1);
                     nameTextViewLabel.setText("Votre prénom :"+majName);
                     callAPIAndDisplayData(name);
-                    hideKeyboard(); // Cache le clavier après l'appui sur le bouton
-                    // Rendre l'EditText et le Button invisibles
+                    hideKeyboard();
+
                     natiViewLabel.setVisibility(View.VISIBLE);
                     whoButton.setVisibility(View.VISIBLE);
 
@@ -95,7 +95,7 @@ public class BottomNationalityFragment extends Fragment {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
 
-        // Call to nationalize.io API
+
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -131,7 +131,7 @@ public class BottomNationalityFragment extends Fragment {
             }
         });
 
-        // Call to genderize.io API
+
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -143,9 +143,9 @@ public class BottomNationalityFragment extends Fragment {
                             JSONObject jsonObject = new JSONObject(genderizeAPIResult);
                             String gender = jsonObject.getString("gender");
                             if (gender.equals("male")) {
-                                genderView.setText("Homme \u2642"); // Pour le symbole masculin ♂
+                                genderView.setText("Homme \u2642"); // symbole ♂
                             } else {
-                                genderView.setText("Femme \u2640"); // Pour le symbole féminin ♀
+                                genderView.setText("Femme \u2640"); // symbole ♀
                             }
                             genderView.setVisibility(View.VISIBLE);
                             genderViewLabel.setVisibility(View.VISIBLE); // Rendre visible le TextView pour le label du genre
