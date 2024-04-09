@@ -141,6 +141,9 @@ public class BottomPersonFragment extends Fragment {
                                 }
                                 RequestOptions requestOptions = new RequestOptions()
                                         .diskCacheStrategy(DiskCacheStrategy.ALL);
+                                if (requireContext() == null) {
+                                    throw new IllegalStateException("Fragment " + this + " not attached to a context.");
+                                }
                                 Glide.with(requireContext())
                                         .load(profileImageUrl)
                                         .apply(requestOptions)

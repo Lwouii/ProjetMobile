@@ -24,7 +24,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
         this.context = context;
         this.pets = pets;
     }
-
+    // 2 -créer tous les viewholder avec le layout en question
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,6 +35,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+    // 3- bindViewHolder va remplir tous les view holder avec les valeurs/images
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Pet pet = pets.get(position);
@@ -44,9 +45,10 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
             Picasso.get().load(posterPath).into(holder.imageView);
         }
         // image placeholder a ajouter
-        Picasso.get().load(R.drawable.ic_launcher_foreground).into(holder.imageView);
+       //Picasso.get().load(R.drawable.ic_launcher_foreground).into(holder.imageView);
     }
 
+    // obligatoire mais inutile
     @Override
     public int getItemCount() {
         if (pets == null)
@@ -54,7 +56,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
         return pets.size();
     }
 
-
+    // 1- récupérer les élément du layout qui doit afficher un seul chien
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView;
         RoundedImageView imageView;
