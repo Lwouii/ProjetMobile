@@ -16,6 +16,7 @@
         android:layout_marginTop="60dp"
         android:textSize="15sp"
         android:gravity="left"
+        android:layout_marginLeft="20dp"
         android:textColor="@color/lavender"
         />
     <TextView
@@ -23,7 +24,9 @@
         android:layout_below="@+id/infotextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:text="Utilisation :"
         android:textSize="25sp"
         android:gravity="left"
@@ -47,6 +50,7 @@
         android:layout_height="wrap_content"
         android:text="La page Nationality vous permettra d'accéder à une estimation de votre nationalité et de votre genre en fonction de votre nom."
         android:textSize="15sp"
+        android:layout_marginLeft="20dp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="?android:attr/textColorPrimary"
@@ -67,6 +71,8 @@
         android:layout_below="@+id/personLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+
         android:text="La page Person vous permettra de générer une identité entière au hasard. ELle peut être utile si vous ne vous rappellez pas qui vous êtes ou si vous souhaitez créer un jeu de rôle par exemple."
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
@@ -89,6 +95,8 @@
         android:layout_below="@+id/dogLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+
         android:text="La page Dog vous permettra de générer un chien à partir d'un nom. Le nom de ce chien et sa photo seront enregistrés, vous pourrez accéder à tous vos chiens dans l'accueil Home."
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
@@ -111,6 +119,8 @@
         android:layout_below="@+id/catLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+
         android:text="La page Cat vous permettra de générer un chat à partir d'un nom. Le nom de ce chat et sa photo seront enregistrés, vous pourrez accéder à tous vos chats dans l'accueil Home."
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
@@ -133,6 +143,8 @@
         android:layout_below="@+id/homeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+
         android:text="La page Home vous permettra de voir tous les chiens et chats que vous avez crée. Si vous vouhaitez vider la base, pas de panique, vous pouvez passer par les paramètres."
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
