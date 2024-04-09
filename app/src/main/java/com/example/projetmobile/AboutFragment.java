@@ -34,14 +34,10 @@ public class AboutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_about, container, false);
-
-        // Trouver la référence du TextView dans le layout
         infoTextView = rootView.findViewById(R.id.infotextview);
 
-        // Vous pouvez également manipuler le TextView ici, par exemple :
-        // infoTextView.setText("Nouveau texte");
+     ;
 
         return rootView;
     }
