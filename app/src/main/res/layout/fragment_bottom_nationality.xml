@@ -44,6 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/whoButton"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"
         android:textColor="@color/design_default_color_primary_variant"

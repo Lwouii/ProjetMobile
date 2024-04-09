@@ -77,7 +77,7 @@ public class BottomNationalityFragment extends Fragment {
                 } else {
                     nomText.setText(name);
                     String majName=name.substring(0, 1).toUpperCase() + name.substring(1);
-                    nameTextViewLabel.setText("Votre prénom :"+majName);
+                    nameTextViewLabel.setText("Votre prénom : "+majName);
                     callAPIAndDisplayData(name);
                     hideKeyboard();
 

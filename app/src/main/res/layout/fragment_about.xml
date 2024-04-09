@@ -15,7 +15,7 @@
         android:text="Cette application a été conçue dans un but humoristique dans le cadre d'un projet de développement mobile sur Android."
         android:layout_marginTop="60dp"
         android:textSize="15sp"
-        android:gravity="left"
+        android:gravity="center"
         android:layout_marginLeft="20dp"
         android:textColor="@color/lavender"
         />
