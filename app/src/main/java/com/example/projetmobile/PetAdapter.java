@@ -44,6 +44,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
             Picasso.get().load(posterPath).into(holder.imageView);
         }
         // image placeholder a ajouter
+        Picasso.get().load(R.drawable.ic_launcher_foreground).into(holder.imageView);
     }
 
     @Override
