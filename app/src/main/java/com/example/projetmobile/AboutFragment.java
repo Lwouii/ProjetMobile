@@ -16,14 +16,12 @@ import android.widget.TextView;
  */
 public class AboutFragment extends Fragment {
 
-    private TextView infoTextView;
     public AboutFragment() {
         // Required empty public constructor
     }
 
     public static AboutFragment newInstance(String param1, String param2) {
-        AboutFragment fragment = new AboutFragment();
-        return fragment;
+        return new AboutFragment();
     }
 
     @Override
@@ -35,7 +33,7 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_about, container, false);
-        infoTextView = rootView.findViewById(R.id.infotextview);
+        TextView infoTextView = rootView.findViewById(R.id.infotextview);
 
      ;
 

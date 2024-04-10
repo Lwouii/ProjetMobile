@@ -32,6 +32,38 @@
     <string name="votre_num_ro_de_t_l_phone_2">Votre numéro de téléphone :</string>
     <string name="rue">Rue :</string>
     <string name="votre_rue">Votre rue :</string>
+    <string name="cette_application_a_t_con_ue_dans_un_but_humoristique_dans_le_cadre_d_un_projet_de_d_veloppement_mobile_sur_android">Cette application a été conçue dans un but humoristique dans le cadre d\'un projet de développement mobile sur Android.</string>
+    <string name="utilisation_de_l_application">Utilisation de l\'application :</string>
+    <string name="nationality">Nationality :</string>
+    <string name="la_page_nationality_vous_permettra_d_acc_der_une_estimation_de_votre_nationalit_et_de_votre_genre_en_fonction_de_votre_nom">La page Nationality vous permettra d\'accéder à une estimation de votre nationalité et de votre genre en fonction de votre nom.</string>
+    <string name="person">Person :</string>
+    <string name="la_page_person_vous_permettra_de_g_n_rer_une_identit_enti_re_au_hasard_elle_peut_tre_utile_si_vous_ne_vous_rappellez_pas_qui_vous_tes_ou_si_vous_souhaitez_cr_er_un_jeu_de_r_le_par_exemple">La page Person vous permettra de générer une identité entière au hasard. ELle peut être utile si vous ne vous rappellez pas qui vous êtes ou si vous souhaitez créer un jeu de rôle par exemple.</string>
+    <string name="dog">Dog :</string>
+    <string name="la_page_dog_vous_permettra_de_g_n_rer_un_chien_partir_d_un_nom_le_nom_de_ce_chien_et_sa_photo_seront_enregistr_s_vous_pourrez_acc_der_tous_vos_chiens_dans_l_accueil_home">La page Dog vous permettra de générer un chien à partir d\'un nom. Le nom de ce chien et sa photo seront enregistrés, vous pourrez accéder à tous vos chiens dans l\'accueil Home.</string>
+    <string name="cat">Cat :</string>
+    <string name="la_page_cat_vous_permettra_de_g_n_rer_un_chat_partir_d_un_nom_le_nom_de_ce_chat_et_sa_photo_seront_enregistr_s_vous_pourrez_acc_der_tous_vos_chats_dans_l_accueil_home">La page Cat vous permettra de générer un chat à partir d\'un nom. Le nom de ce chat et sa photo seront enregistrés, vous pourrez accéder à tous vos chats dans l\'accueil Home.</string>
+    <string name="home">Home :</string>
+    <string name="la_page_home_vous_permettra_de_voir_tous_les_chiens_et_chats_que_vous_avez_cr_e_si_vous_vouhaitez_vider_la_base_pas_de_panique_vous_pouvez_passer_par_les_param_tres">La page Home vous permettra de voir tous les chiens et chats que vous avez crée. Si vous vouhaitez vider la base, pas de panique, vous pouvez passer par les paramètres.</string>
+    <string name="rediscover_yourself">Rediscover yourself !</string>
+    <string name="who_am_i">Who Am I ?</string>
+    <string name="si_vous_aimez_notre_application_partagez_la">Si vous aimez notre application, partagez-la !</string>
+    <string name="partager">Partager</string>
+    <string name="version_1_0">Version 1.0</string>
+    <string name="vider_la_bdd">Vider la bdd</string>
+    <string name="param_tres">Paramètres</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="bienvenue">Bienvenue !</string>
+    <string name="voil_tes_animaux">Voilà tes animaux :</string>
+    <string name="here_are_your_dogs">Voilà tes chiens :</string>
+    <string name="here_are_your_cats">Voilà tes chats :</string>
+    <string name="si_aucun_animal_est_affich_ajoute_en_dans_les_onglets_dog_et_cat">Si aucun animal est affiché, ajoutes en dans les onglets Dog et Cat !</string>
+    <string name="aucune_connexion_internet_disponible">Aucune connexion Internet disponible.</string>
+    <string name="r_essayer">Réessayer</string>
+    <string name="erreur">Erreur</string>
+    <string name="date_de_naissance">Date de naissance :</string>
+    <string name="entrez_le_nom_de_votre_chien">Entrez le nom de votre chien</string>
+    <string name="cr_er">Créer</string>
+    <string name="entrez_le_nom_de_votre_chat">Entrez le nom de votre chat</string>
 
 
 </resources>

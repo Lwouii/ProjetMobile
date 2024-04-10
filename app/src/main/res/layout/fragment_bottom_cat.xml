@@ -15,33 +15,33 @@
         android:padding="5dp"
         android:textColorHint="?android:attr/textColorPrimary"
         android:textAlignment="center"
-        android:hint="Entrez le nom de votre chat"
+        android:hint="@string/entrez_le_nom_de_votre_chat"
         android:maxLines="1"
         android:inputType="text"
         android:background="@drawable/cadre"
-        android:drawableRight="@drawable/baseline_search_24"
-        android:id="@+id/catText"></EditText>
-        <Button
-            android:id="@+id/catButton"
-            android:backgroundTint="@color/design_default_color_primary_variant"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/catText"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/white"
-            android:text="Créer"
-            ></Button>
+        android:drawableEnd="@drawable/baseline_search_24"
+        android:id="@+id/catText" />
+
+    <Button
+        android:id="@+id/catButton"
+        android:backgroundTint="@color/design_default_color_primary_variant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/catText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/white"
+        android:text="@string/cr_er" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/catButton"
-        android:textSize="17sp"
+        android:textSize="22sp"
         android:textColor="?android:attr/textColorPrimary"
         android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/catName"></TextView>
+        android:id="@+id/catName" />
     <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/catImageView"
         android:layout_width="400dp"

@@ -9,7 +9,7 @@
         android:id="@+id/textViewError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Erreur"
+        android:text="@string/erreur"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"/>
@@ -21,7 +21,7 @@
         android:textColor="?android:attr/textColorPrimary"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/textViewError"
-        android:text="Aucune connexion Internet disponible."
+        android:text="@string/aucune_connexion_internet_disponible"
         android:textSize="18sp"/>
 
     <Button
@@ -32,6 +32,6 @@
         android:layout_marginTop="20dp"
         android:textColor="?android:attr/textColorPrimary"
         android:backgroundTint="?attr/android:statusBarColor"
-        android:text="Réessayer"
+        android:text="@string/r_essayer"
         android:onClick="retryButtonClicked"/>
 </RelativeLayout>

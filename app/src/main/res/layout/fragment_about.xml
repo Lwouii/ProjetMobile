@@ -12,7 +12,7 @@
         android:id="@+id/infotextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cette application a été conçue dans un but humoristique dans le cadre d'un projet de développement mobile sur Android."
+        android:text="@string/cette_application_a_t_con_ue_dans_un_but_humoristique_dans_le_cadre_d_un_projet_de_d_veloppement_mobile_sur_android"
         android:layout_marginTop="60dp"
         android:textSize="15sp"
         android:gravity="center"
@@ -26,127 +26,126 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
-        android:text="Utilisation de l'application :"
+        android:text="@string/utilisation_de_l_application"
         android:gravity="left"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
-        />
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/natioLabel"
         android:layout_below="@+id/info2textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nationality :"
+        android:text="@string/nationality"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="@color/lavender"
-        />
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/natio"
         android:layout_below="@+id/natioLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="La page Nationality vous permettra d'accéder à une estimation de votre nationalité et de votre genre en fonction de votre nom."
+        android:text="@string/la_page_nationality_vous_permettra_d_acc_der_une_estimation_de_votre_nationalit_et_de_votre_genre_en_fonction_de_votre_nom"
         android:textSize="15sp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="?android:attr/textColorPrimary"
-        />
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/personLabel"
         android:layout_below="@+id/natio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Person :"
+        android:text="@string/person"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="@color/lavender"
-        />
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/person"
         android:layout_below="@+id/personLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-
-        android:text="La page Person vous permettra de générer une identité entière au hasard. ELle peut être utile si vous ne vous rappellez pas qui vous êtes ou si vous souhaitez créer un jeu de rôle par exemple."
+        android:layout_marginStart="20dp"
+        android:text="@string/la_page_person_vous_permettra_de_g_n_rer_une_identit_enti_re_au_hasard_elle_peut_tre_utile_si_vous_ne_vous_rappellez_pas_qui_vous_tes_ou_si_vous_souhaitez_cr_er_un_jeu_de_r_le_par_exemple"
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="?android:attr/textColorPrimary"
-        />
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/dogLabel"
         android:layout_below="@+id/person"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dog :"
+        android:text="@string/dog"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="@color/lavender"
-        />
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/dog"
         android:layout_below="@+id/dogLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="La page Dog vous permettra de générer un chien à partir d'un nom. Le nom de ce chien et sa photo seront enregistrés, vous pourrez accéder à tous vos chiens dans l'accueil Home."
+        android:layout_marginStart="20dp"
+        android:text="@string/la_page_dog_vous_permettra_de_g_n_rer_un_chien_partir_d_un_nom_le_nom_de_ce_chien_et_sa_photo_seront_enregistr_s_vous_pourrez_acc_der_tous_vos_chiens_dans_l_accueil_home"
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="?android:attr/textColorPrimary"
-        />
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/catLabel"
         android:layout_below="@+id/dog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cat :"
+        android:text="@string/cat"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="@color/lavender"
-        />
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/cat"
         android:layout_below="@+id/catLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="La page Cat vous permettra de générer un chat à partir d'un nom. Le nom de ce chat et sa photo seront enregistrés, vous pourrez accéder à tous vos chats dans l'accueil Home."
+        android:layout_marginStart="20dp"
+        android:text="@string/la_page_cat_vous_permettra_de_g_n_rer_un_chat_partir_d_un_nom_le_nom_de_ce_chat_et_sa_photo_seront_enregistr_s_vous_pourrez_acc_der_tous_vos_chats_dans_l_accueil_home"
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="?android:attr/textColorPrimary"
-        />
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/homeLabel"
         android:layout_below="@+id/cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home :"
+        android:text="@string/home"
         android:textSize="20sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="@color/lavender"
-        />
+        tools:ignore="RtlHardcoded" />
     <TextView
         android:id="@+id/home"
         android:layout_below="@+id/homeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:text="La page Home vous permettra de voir tous les chiens et chats que vous avez crée. Si vous vouhaitez vider la base, pas de panique, vous pouvez passer par les paramètres."
+        android:layout_marginStart="20dp"
+        android:text="@string/la_page_home_vous_permettra_de_voir_tous_les_chiens_et_chats_que_vous_avez_cr_e_si_vous_vouhaitez_vider_la_base_pas_de_panique_vous_pouvez_passer_par_les_param_tres"
         android:textSize="15sp"
         android:layout_centerHorizontal="true"
         android:gravity="left"
         android:textColor="?android:attr/textColorPrimary"
-        />
+        tools:ignore="RtlHardcoded" />
 
 </RelativeLayout>

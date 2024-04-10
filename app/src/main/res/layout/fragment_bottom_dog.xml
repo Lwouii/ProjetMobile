@@ -20,8 +20,9 @@
         android:inputType="text"
         android:background="@drawable/cadre"
         android:drawableRight="@drawable/baseline_search_24"
-        android:hint="Entrez le nom de votre chien"
-        android:id="@+id/dogText"></EditText>
+        android:hint="@string/entrez_le_nom_de_votre_chien"
+        android:id="@+id/dogText" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,8 +33,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
         android:backgroundTint="@color/design_default_color_primary_variant"
-        android:text="Créer"
-        ></Button>
+        android:text="@string/cr_er" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
         android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:id="@+id/dogName"></TextView>
+        android:id="@+id/dogName" />
     <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/dogImageView"
         android:layout_width="400dp"

@@ -58,7 +58,6 @@
             android:id="@+id/info_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
             android:textSize="20sp"
             android:textColor="?android:attr/statusBarColor"
@@ -110,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:textColor="?android:attr/textColorPrimary"
-            android:text="Date de naissance : "
+            android:text="@string/date_de_naissance"
             android:textStyle="bold"/>
 
         <TextView

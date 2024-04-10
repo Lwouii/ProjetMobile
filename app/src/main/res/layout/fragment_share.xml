@@ -13,7 +13,7 @@
        android:layout_height="wrap_content"
        android:layout_centerHorizontal="true"
        android:layout_marginTop="60dp"
-       android:text="Si vous aimez notre application, partagez-la !"
+       android:text="@string/si_vous_aimez_notre_application_partagez_la"
        android:textColor="?android:attr/textColorPrimary"
        android:textSize="20sp"
        android:textStyle="bold"
@@ -28,7 +28,7 @@
        android:layout_marginTop="20dp"
        android:layout_centerHorizontal="true"
        android:textColor="@color/white"
-       android:text="Partager"
+       android:text="@string/partager"
        />
 
 </RelativeLayout>

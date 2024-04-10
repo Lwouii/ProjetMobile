@@ -13,14 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="?android:attr/textColorPrimary"
-        android:text="Version 1.0"
+        android:text="@string/version_1_0"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="60dp"
         android:layout_marginEnd="20dp"
         />
     <Button
-        android:drawableLeft="@drawable/baseline_delete_24"
+        android:drawableStart="@drawable/baseline_delete_24"
         android:id="@+id/clearButton"
         android:textColor="?android:attr/textColorPrimary"
         android:textAlignment="textStart"
@@ -32,14 +32,14 @@
         android:layout_below="@id/switchTheme"
         android:backgroundTint="@android:color/transparent"
         android:background="@drawable/rounded_corners"
-        android:text="Vider la bdd" />
+        android:text="@string/vider_la_bdd" />
 
     <TextView
         android:id="@+id/textViewParametre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="?android:attr/textColorPrimary"
-        android:text="Paramètres"
+        android:text="@string/param_tres"
         android:layout_centerHorizontal="true"
         android:textSize="24sp"
         android:layout_alignParentTop="true"
@@ -52,11 +52,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="?android:attr/textColorPrimary"
-        android:text="Dark mode     "
+        android:text="@string/dark_mode"
         android:layout_below="@+id/textViewParametre"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:checked="false"
 
-        />
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 </RelativeLayout>

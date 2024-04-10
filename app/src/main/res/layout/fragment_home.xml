@@ -4,11 +4,9 @@
     android:layout_height="match_parent"
     android:background="?attr/colorPrimary">
 
-    <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".HomeFragment"
         >
 
@@ -18,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
-            android:text="Bienvenue !"
+            android:text="@string/bienvenue"
             android:textColor="?android:attr/textColorPrimary"
             android:textSize="60sp" />
         <TextView
@@ -27,10 +25,10 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
-            android:text="Voilà tes animaux : "
+            android:text="@string/voil_tes_animaux"
             android:layout_below="@id/welcome"
             android:textColor="?android:attr/textColorPrimary"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
 
 
@@ -41,7 +39,7 @@
             android:layout_below="@id/welcomepets"
             android:layout_margin="10dp"
             android:gravity="center_horizontal"
-            android:text="Here are your dogs :"
+            android:text="@string/here_are_your_dogs"
             android:textColor="?android:attr/statusBarColor"
             android:textSize="25sp" />
 
@@ -60,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/dogsLayout"
             android:layout_margin="10dp"
-            android:text="Here are your cats :"
+            android:text="@string/here_are_your_cats"
             android:textColor="?android:attr/statusBarColor"
             android:textSize="25sp" />
 
@@ -74,6 +72,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_corners" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -81,7 +80,7 @@
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:layout_below="@id/catsLayout"
-            android:text="Si aucun animal est affiché, ajoute en dans les onglets Dog et Cat !"></TextView>
+            android:text="@string/si_aucun_animal_est_affich_ajoute_en_dans_les_onglets_dog_et_cat" />
 
     </RelativeLayout>
 </ScrollView>
