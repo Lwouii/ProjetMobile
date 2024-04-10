@@ -6,6 +6,32 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile_image">Profile Image</string>
+    <string name="creer">Créer</string>
+    <string name="vos_nationalit_s">Vos Nationalités :</string>
+    <string name="oups_il_me_semble_que_votre_pr_nom_soit_un_peu_unique">Oups, il me semble que votre prénom soit un peu unique...</string>
+    <string name="votre_genre">Votre Genre :</string>
+    <string name="votre_genre_s_affichera_ici">Votre genre s\'affichera ici</string>
+    <string name="entrez_votre_nom">Entrez votre nom</string>
+    <string name="votre_photo">Votre photo :</string>
+    <string name="nom">Nom :</string>
+    <string name="nom_de_l_utilisateur">Nom de l\'utilisateur</string>
+    <string name="informations_personnelles">Informations personnelles :</string>
+    <string name="genre">Genre :</string>
+    <string name="genre_2">Genre :</string>
+    <string name="votre_date_de_naissance_est">Votre date de naissance est :</string>
+    <string name="vous_avez">Vous avez :</string>
+    <string name="votre_ge_est">Votre âge est :</string>
+    <string name="num_ro_de_t_l_phone">Numéro de téléphone :</string>
+    <string name="votre_num_ro_de_t_l_phone">Votre numéro de téléphone :</string>
+    <string name="email">Email :</string>
+    <string name="votre_adresse_mail">Votre adresse mail :</string>
+    <string name="adresse">Adresse :</string>
+    <string name="pays">Pays :</string>
+    <string name="votre_pays">Votre pays :</string>
+    <string name="ville">Ville :</string>
+    <string name="votre_num_ro_de_t_l_phone_2">Votre numéro de téléphone :</string>
+    <string name="rue">Rue :</string>
+    <string name="votre_rue">Votre rue :</string>
 
 
 </resources>
