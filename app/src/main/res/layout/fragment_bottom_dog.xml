@@ -29,7 +29,6 @@
         android:id="@+id/dogButton"
         android:layout_below="@id/dogText"
         android:layout_marginTop="5dp"
-
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
         android:backgroundTint="@color/design_default_color_primary_variant"
