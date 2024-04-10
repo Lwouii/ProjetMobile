@@ -30,7 +30,6 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_below="@id/switchTheme"
-        android:backgroundTint="@android:color/transparent"
         android:background="@drawable/rounded_corners"
         android:text="@string/vider_la_bdd" />
 
@@ -54,7 +53,7 @@
         android:textColor="?android:attr/textColorPrimary"
         android:text="@string/dark_mode"
         android:layout_below="@+id/textViewParametre"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:checked="false"
 

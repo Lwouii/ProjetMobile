@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (isAirplaneModeOn) {
             Intent intent = new Intent(Settings.ACTION_AIRPLANE_MODE_SETTINGS);
             startActivity(intent);
-            Toast.makeText(this, "Veuillez désactiver le mode avion s'il vous plaît", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Veuillez désactiver le mode avion s'il vous plaît", Toast.LENGTH_LONG).show();
         }
     }
 }
